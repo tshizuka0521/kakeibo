@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家族家計簿</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg2:#f8f7f5;--bg3:#f0efe9;
+  --text:#1a1a1a;--text2:#555;--text3:#999;
+  --border:#e0dfd8;--border2:#ccc;
+  --accent:#2c6e49;--accent-bg:#edf5f0;--accent-light:#d4ead9;
+  --danger:#c0392b;--danger-bg:#fdf2f2;
+  --info:#1a5fa8;--info-bg:#eef4fb;
+  --radius:10px;--radius-sm:6px;
+  --shadow:0 1px 4px rgba(0,0,0,0.07);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;font-size:14px;color:var(--text);background:var(--bg2);min-height:100vh}
+.app{max-width:960px;margin:0 auto;padding:16px}
+
+/* header */
+.header{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-radius:var(--radius);padding:14px 20px;margin-bottom:16px;box-shadow:var(--shadow)}
+.header-left{display:flex;align-items:center;gap:10px}
+.logo{font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-0.5px}
+.logo span{font-size:12px;font-weight:400;color:var(--text3);margin-left:6px}
+.auth-area{display:flex;align-items:center;gap:10px}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-green{background:var(--accent-bg);color:var(--accent)}
+.badge-gray{background:var(--bg3);color:var(--text2)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:var(--bg);cursor:pointer;font-size:13px;color:var(--text);font-family:inherit;transition:background .15s}
+.btn:hover{background:var(--bg3)}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-primary:hover{background:#225539}
+.btn-sm{padding:5px 10px;font-size:12px}
+.btn-danger-ghost{border-color:transparent;color:var(--text3)}
+.btn-danger-ghost:hover{color:var(--danger);background:var(--danger-bg)}
+
+/* signin */
+.signin-wrap{text-align:center;padding:60px 20px;background:var(--bg);border-radius:var(--radius);box-shadow:var(--shadow)}
+.signin-icon{font-size:48px;margin-bottom:16px}
+.signin-wrap h2{font-size:20px;font-weight:600;margin-bottom:8px}
+.signin-wrap p{color:var(--text2);margin-bottom:24px;font-size:14px;line-height:1.7}
+.google-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--bg);cursor:pointer;font-size:14px;font-weight:500;font-family:inherit;transition:background .15s}
+.google-btn:hover{background:var(--bg3)}
+.google-btn svg{width:18px;height:18px}
+.signin-note{margin-top:16px;font-size:12px;color:var(--text3)}
+
+/* tabs */
+.tabs{display:flex;gap:2px;background:var(--bg3);border-radius:var(--radius-sm);padding:3px;margin-bottom:16px;width:fit-content}
+.tab{padding:7px 18px;border-radius:6px;border:none;background:none;cursor:pointer;font-size:13px;color:var(--text2);font-family:inherit;transition:all .15s}
+.tab.active{background:var(--bg);color:var(--text);font-weight:600;box-shadow:var(--shadow)}
+
+/* month nav */
+.month-nav{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.month-nav .btn{padding:6px 12px}
+.month-title{font-size:18px;font-weight:700;min-width:110px;text-align:center}
+
+/* section card */
+.card{background:var(--bg);border-radius:var(--radius);padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
+.card-title{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;margin-bottom:16px;color:var(--text)}
+.card-title .icon{width:26px;height:26px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--accent-bg)}
+
+/* entry table */
+.tbl-head{display:grid;grid-template-columns:96px 1fr 90px 150px 120px 90px 36px;gap:6px;padding:0 4px 8px;border-bottom:1px solid var(--border)}
+.tbl-head span{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.4px}
+.entry-row{display:grid;grid-template-columns:96px 1fr 90px 150px 120px 90px 36px;gap:6px;align-items:center;padding:4px;border-radius:var(--radius-sm);transition:background .1s}
+.entry-row:hover{background:var(--bg2)}
+.entry-row input,.entry-row select{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;background:var(--bg);color:var(--text);font-family:inherit;width:100%;transition:border-color .15s}
+.entry-row input:focus,.entry-row select:focus{outline:none;border-color:var(--accent)}
+.entries-list{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.add-row-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px dashed var(--border2);border-radius:var(--radius-sm);background:none;cursor:pointer;font-size:13px;color:var(--text3);font-family:inherit;transition:all .15s}
+.add-row-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
+.save-row{display:flex;align-items:center;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.status{font-size:12px;min-height:18px}
+.status.ok{color:var(--accent)}
+.status.err{color:var(--danger)}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.metric{background:var(--bg2);border-radius:var(--radius-sm);padding:14px;text-align:center}
+.metric-label{font-size:11px;color:var(--text3);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.metric-value{font-size:20px;font-weight:700;color:var(--text)}
+
+/* agg table */
+.agg-table{width:100%;border-collapse:collapse}
+.agg-table th{padding:8px 10px;font-size:11px;font-weight:600;color:var(--text3);text-align:right;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.4px}
+.agg-table th:first-child{text-align:left}
+.agg-table td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:right;font-size:13px}
+.agg-table td:first-child{text-align:left;font-weight:500}
+.agg-table tbody tr:hover td{background:var(--bg2)}
+.agg-table tfoot td{font-weight:700;border-top:2px solid var(--border2);border-bottom:none;font-size:14px}
+
+/* settlement */
+.settlement-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.settle-card{background:var(--bg2);border-radius:var(--radius-sm);padding:16px}
+.settle-card h3{font-size:12px;font-weight:600;color:var(--text3);margin-bottom:12px;text-transform:uppercase;letter-spacing:.4px}
+.settle-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px}
+.settle-row:last-child{border-bottom:none;font-weight:700;font-size:14px;padding-top:10px;margin-top:4px}
+.amount-out{color:var(--danger)}
+.amount-in{color:var(--accent)}
+.transfer-box{background:var(--info-bg);border:1px solid #bed3f0;border-radius:var(--radius-sm);padding:16px}
+.transfer-label{font-size:11px;font-weight:600;color:var(--info);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
+.transfer-main{font-size:15px;font-weight:600;color:var(--info)}
+.transfer-amount{font-size:22px;font-weight:700;color:var(--info)}
+
+/* category mgr */
+.cat-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.cat-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;font-size:13px}
+.cat-tag button{background:none;border:none;cursor:pointer;color:var(--text3);font-size:12px;line-height:1;padding:0;display:flex;align-items:center}
+.cat-tag button:hover{color:var(--danger)}
+.cat-add{display:flex;gap:8px;align-items:center}
+.cat-add input{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 10px;font-size:13px;background:var(--bg);color:var(--text);font-family:inherit;width:160px}
+.cat-add input:focus{outline:none;border-color:var(--accent)}
+
+/* ratio */
+.ratio-row{display:flex;align-items:center;gap:10px;font-size:14px;padding:14px;background:var(--bg2);border-radius:var(--radius-sm)}
+.ratio-input{width:64px;height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:14px;font-weight:600;text-align:center;background:var(--bg);color:var(--text);font-family:inherit}
+.ratio-input:focus{outline:none;border-color:var(--accent)}
+
+/* year table */
+.year-wrap{overflow-x:auto}
+.year-table{width:100%;border-collapse:collapse;font-size:12px;min-width:800px}
+.year-table th{padding:8px 8px;border-bottom:1px solid var(--border);font-size:11px;font-weight:600;color:var(--text3);text-align:right;white-space:nowrap;text-transform:uppercase;letter-spacing:.4px}
+.year-table th:first-child{text-align:left;position:sticky;left:0;background:var(--bg);z-index:1}
+.year-table td{padding:7px 8px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap}
+.year-table td:first-child{text-align:left;position:sticky;left:0;background:var(--bg);font-weight:600;z-index:1}
+.year-table tbody tr:hover td{background:var(--bg2)}
+.year-table tfoot td{font-weight:700;border-top:2px solid var(--border2);border-bottom:none}
+
+/* sheet id */
+.sheet-id{font-size:11px;background:var(--bg2);padding:8px 12px;border-radius:var(--radius-sm);word-break:break-all;font-family:monospace;color:var(--text2);border:1px solid var(--border);margin-top:8px}
+
+/* loading */
+.loading{text-align:center;padding:40px;color:var(--text3);font-size:13px}
+
+/* responsive */
+@media(max-width:700px){
+  .tbl-head,.entry-row{grid-template-columns:80px 1fr 80px;gap:4px}
+  .tbl-head span:nth-child(n+4),.entry-row *:nth-child(n+4){display:none}
+  .settlement-grid{grid-template-columns:1fr}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div class="header-left">
+      <div class="logo">家族家計簿 <span>さとし & しずか</span></div>
+    </div>
+    <div class="auth-area">
+      <span id="user-badge" class="badge badge-gray" style="display:none"></span>
+      <button class="btn" id="auth-btn" onclick="handleAuth()">Googleでサインイン</button>
+    </div>
+  </div>
+
+  <div id="signin-view">
+    <div class="signin-wrap">
+      <div class="signin-icon">📒</div>
+      <h2>家族の家計簿へようこそ</h2>
+      <p>さとし・しずかさんそれぞれのGoogleアカウントで<br>サインインしてデータを共有できます</p>
+      <button class="google-btn" onclick="handleAuth()">
+        <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.8 2.5 30.2 0 24 0 14.6 0 6.6 5.5 2.6 13.5l7.9 6.1C12.4 13.2 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8C43.5 37.4 46.5 31.4 46.5 24.5z"/><path fill="#FBBC05" d="M10.5 28.4A14.6 14.6 0 019.5 24c0-1.5.3-3 .7-4.4L2.3 13.5A23.9 23.9 0 000 24c0 3.9.9 7.5 2.6 10.8l7.9-6.4z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.2 0-11.5-4.2-13.4-9.8l-7.9 6.1C6.6 42.5 14.6 48 24 48z"/></svg>
+        Googleアカウントでサインイン
+      </button>
+      <div class="signin-note">ポップアップが表示されない場合はブラウザのポップアップ許可を確認してください</div>
+    </div>
+  </div>
+
+  <div id="main-view" style="display:none">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('monthly',this)">月次</button>
+      <button class="tab" onclick="switchTab('yearly',this)">年間集計</button>
+      <button class="tab" onclick="switchTab('settings',this)">設定</button>
+    </div>
+
+    <!-- 月次タブ -->
+    <div id="tab-monthly">
+      <div class="month-nav">
+        <button class="btn" onclick="changeMonth(-1)">◀</button>
+        <span class="month-title" id="month-title"></span>
+        <button class="btn" onclick="changeMonth(1)">▶</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">📝</span>入力欄</div>
+        <div class="tbl-head">
+          <span>日付</span><span>品名</span><span>金額</span>
+          <span>支払方法</span><span>カテゴリ</span><span>対象者</span><span></span>
+        </div>
+        <div class="entries-list" id="entries-list"></div>
+        <button class="add-row-btn" onclick="addEntry()">＋ 行を追加</button>
+        <div class="save-row">
+          <button class="btn btn-primary" onclick="saveData()" id="save-btn">💾 保存する</button>
+          <span class="status" id="save-status"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">📊</span>項目別集計</div>
+        <div class="metrics">
+          <div class="metric"><div class="metric-label">合計</div><div class="metric-value" id="m-total">¥0</div></div>
+          <div class="metric"><div class="metric-label">ふたり</div><div class="metric-value" id="m-both">¥0</div></div>
+          <div class="metric"><div class="metric-label">さとし</div><div class="metric-value" id="m-satoshi">¥0</div></div>
+          <div class="metric"><div class="metric-label">しずか</div><div class="metric-value" id="m-shizuka">¥0</div></div>
+        </div>
+        <table class="agg-table">
+          <thead><tr>
+            <th>カテゴリ</th><th>ふたり</th><th>さとし</th><th>しずか</th><th>合計</th>
+          </tr></thead>
+          <tbody id="agg-tbody"></tbody>
+          <tfoot id="agg-tfoot"></tfoot>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">🧮</span>精算</div>
+        <div class="settlement-grid">
+          <div class="settle-card">
+            <h3>💳 家族カード — 引き落とし口座への入金額</h3>
+            <div class="settle-row"><span>Amex 合計</span><span id="s-amex">¥0</span></div>
+            <div class="settle-row"><span>三菱地所 合計</span><span id="s-mits">¥0</span></div>
+            <div class="settle-row"><span>家族カード 合計</span><span id="s-card-total">¥0</span></div>
+            <div class="settle-row" style="margin-top:8px;border-top:1px solid var(--border2);padding-top:10px">
+              <span>さとし 入金 (<span id="lbl-ratio-s">45</span>%)</span>
+              <span id="s-dep-s" class="amount-out">¥0</span>
+            </div>
+            <div class="settle-row">
+              <span>しずか 入金 (<span id="lbl-ratio-z">55</span>%)</span>
+              <span id="s-dep-z" class="amount-out">¥0</span>
+            </div>
+          </div>
+          <div class="settle-card">
+            <h3>🔄 立替精算（相殺後）</h3>
+            <div class="settle-row"><span>さとし 立替額</span><span id="s-adv-s">¥0</span></div>
+            <div class="settle-row"><span>しずか 立替額</span><span id="s-adv-z">¥0</span></div>
+            <div class="settle-row"><span>相殺後 差額</span><span id="s-net">¥0</span></div>
+          </div>
+        </div>
+        <div class="transfer-box">
+          <div class="transfer-label">送金指示</div>
+          <div class="transfer-main" id="transfer-text">-</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 年間タブ -->
+    <div id="tab-yearly" style="display:none">
+      <div class="card">
+        <div class="card-title"><span class="icon">📅</span>年間集計 — <span id="year-label"></span></div>
+        <div class="year-wrap">
+          <table class="year-table">
+            <thead id="year-thead"></thead>
+            <tbody id="year-tbody"></tbody>
+            <tfoot id="year-tfoot"></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 設定タブ -->
+    <div id="tab-settings" style="display:none">
+      <div class="card">
+        <div class="card-title"><span class="icon">🏷️</span>カテゴリ管理</div>
+        <p style="font-size:12px;color:var(--text3);margin-bottom:12px">追加・削除は過去の月次集計にもすぐ反映されます</p>
+        <div class="cat-list" id="cat-list"></div>
+        <div class="cat-add">
+          <input type="text" id="new-cat" placeholder="新しいカテゴリ名" onkeydown="if(event.key==='Enter')addCategory()">
+          <button class="btn btn-primary btn-sm" onclick="addCategory()">＋ 追加</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="icon">⚖️</span>負担割合</div>
+        <div class="ratio-row">
+          <span>さとし</span>
+          <input type="number" class="ratio-input" id="r-satoshi" value="45" min="0" max="100" oninput="syncRatio()">
+          <span>%　しずか</span>
+          <input type="number" class="ratio-input" id="r-shizuka" value="55" min="0" max="100" readonly>
+          <span>%</span>
+        </div>
+        <div style="margin-top:14px;display:flex;align-items:center;gap:12px">
+          <button class="btn btn-primary" onclick="saveSettings()">保存する</button>
+          <span class="status" id="settings-status"></span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="icon">🔗</span>スプレッドシート</div>
+        <p style="font-size:12px;color:var(--text3)">接続中のスプレッドシートID</p>
+        <div class="sheet-id">1tZY13dpKZ4O_DansTiXbY4z6AhV-Ob0r3Bc6kUL97nc</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script src="https://accounts.google.com/gsi/client" async></script>
+<script>
+const CLIENT_ID = '51278390110-ag20mhlgof9jefuhdhu1c0lolmd166i8.apps.googleusercontent.com';
+const SHEET_ID  = '1tZY13dpKZ4O_DansTiXbY4z6AhV-Ob0r3Bc6kUL97nc';
+const SCOPES    = 'https://www.googleapis.com/auth/spreadsheets';
+const PAYMENTS  = ['Amex','三菱地所','現金/個人(さとし)','現金/個人(しずか)'];
+const TARGETS   = ['ふたり','さとし','しずか'];
+
+let tokenClient, accessToken = null;
+let currentYear = new Date().getFullYear();
+let currentMonth = new Date().getMonth() + 1;
+let categories = ['食費','日用品','医療費','交通費','外食','娯楽','衣服','水道光熱費','通信費','その他'];
+let ratioSatoshi = 45;
+let entries = [];
+
+const fmt = n => '¥' + Math.round(n).toLocaleString('ja-JP');
+const $ = id => document.getElementById(id);
+
+// --- Auth ---
+function gapiLoaded() {
+  gapi.load('client', async () => {
+    await gapi.client.init({ discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'] });
+    tokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: CLIENT_ID, scope: SCOPES,
+      callback: resp => { if (!resp.error) { accessToken = resp.access_token; onSignedIn(); } }
+    });
+  });
+}
+
+function handleAuth() {
+  if (accessToken) {
+    accessToken = null;
+    $('signin-view').style.display = '';
+    $('main-view').style.display = 'none';
+    $('auth-btn').textContent = 'Googleでサインイン';
+    $('user-badge').style.display = 'none';
+  } else {
+    tokenClient.requestAccessToken({ prompt: 'consent' });
+  }
+}
+
+async function onSignedIn() {
+  $('signin-view').style.display = 'none';
+  $('main-view').style.display = '';
+  $('auth-btn').textContent = 'サインアウト';
+  const b = $('user-badge');
+  b.style.display = 'inline-flex';
+  b.textContent = '✓ 接続中';
+  b.className = 'badge badge-green';
+  updateMonthTitle();
+  await loadSettings();
+  renderCategories();
+  await loadMonthData();
+}
+
+// --- Settings ---
+async function loadSettings() {
+  try {
+    const r = await gapi.client.sheets.spreadsheets.values.get({ spreadsheetId: SHEET_ID, range: '設定!A1:B20' });
+    (r.result.values || []).forEach(row => {
+      if (row[0] === 'categories') categories = row[1].split(',').filter(Boolean);
+      if (row[0] === 'ratioSatoshi') ratioSatoshi = parseInt(row[1]) || 45;
+    });
+    $('r-satoshi').value = ratioSatoshi;
+    $('r-shizuka').value = 100 - ratioSatoshi;
+    updateRatioLabels();
+  } catch(e) {}
+}
+
+async function saveSettings() {
+  ratioSatoshi = Math.min(100, Math.max(0, parseInt($('r-satoshi').value) || 0));
+  const values = [['categories', categories.join(',')], ['ratioSatoshi', ratioSatoshi]];
+  try {
+    await ensureSheet('設定');
+    await gapi.client.sheets.spreadsheets.values.update({
+      spreadsheetId: SHEET_ID, range: '設定!A1:B2',
+      valueInputOption: 'RAW', resource: { values }
+    });
+    showStatus('settings-status', '✓ 保存しました', true);
+    updateRatioLabels();
+    renderSettlement();
+  } catch(e) { showStatus('settings-status', '保存失敗: ' + e.message, false); }
+}
+
+function syncRatio() {
+  const v = Math.min(100, Math.max(0, parseInt($('r-satoshi').value) || 0));
+  $('r-shizuka').value = 100 - v;
+  ratioSatoshi = v;
+  renderSettlement();
+}
+
+function updateRatioLabels() {
+  $('lbl-ratio-s').textContent = ratioSatoshi;
+  $('lbl-ratio-z').textContent = 100 - ratioSatoshi;
+}
+
+// --- Category ---
+function renderCategories() {
+  const c = $('cat-list'); c.innerHTML = '';
+  categories.forEach((cat, i) => {
+    const tag = document.createElement('span');
+    tag.className = 'cat-tag';
+    tag.innerHTML = cat + '<button onclick="deleteCategory(' + i + ')" title="削除">✕</button>';
+    c.appendChild(tag);
+  });
+}
+
+function addCategory() {
+  const inp = $('new-cat');
+  const val = inp.value.trim();
+  if (!val || categories.includes(val)) return;
+  categories.push(val);
+  inp.value = '';
+  renderCategories();
+  renderEntries();
+  renderAgg();
+}
+
+function deleteCategory(i) {
+  if (!confirm(categories[i] + ' を削除しますか？')) return;
+  categories.splice(i, 1);
+  renderCategories();
+  renderEntries();
+  renderAgg();
+}
+
+// --- Month data ---
+async function loadMonthData() {
+  const name = sheetName();
+  try {
+    const r = await gapi.client.sheets.spreadsheets.values.get({ spreadsheetId: SHEET_ID, range: name + '!A2:F500' });
+    const rows = r.result.values || [];
+    entries = rows.map(r => ({
+      date: r[0]||'', name: r[1]||'', amount: r[2]||'',
+      payment: r[3]||PAYMENTS[0], category: r[4]||categories[0], target: r[5]||TARGETS[0]
+    }));
+  } catch(e) { entries = []; }
+  if (!entries.length) entries = [blankEntry()];
+  renderEntries();
+  renderAgg();
+  renderSettlement();
+}
+
+function blankEntry() {
+  return { date: '', name: '', amount: '', payment: PAYMENTS[0], category: categories[0], target: TARGETS[0] };
+}
+
+function sheetName() { return currentYear + '年' + currentMonth + '月'; }
+
+function renderEntries() {
+  const list = $('entries-list'); list.innerHTML = '';
+  entries.forEach((e, i) => {
+    const row = document.createElement('div');
+    row.className = 'entry-row';
+    const catOpts = categories.map(c => `<option value="${c}" ${e.category===c?'selected':''}>${c}</option>`).join('');
+    const payOpts = PAYMENTS.map(p => `<option value="${p}" ${e.payment===p?'selected':''}>${p}</option>`).join('');
+    const tgtOpts = TARGETS.map(t => `<option value="${t}" ${e.target===t?'selected':''}>${t}</option>`).join('');
+    row.innerHTML = `
+      <input type="date" value="${e.date}" oninput="entries[${i}].date=this.value">
+      <input type="text" value="${escHtml(e.name)}" placeholder="品名" oninput="entries[${i}].name=this.value">
+      <input type="number" value="${e.amount}" placeholder="0" min="0" oninput="entries[${i}].amount=this.value;renderAgg();renderSettlement()">
+      <select onchange="entries[${i}].payment=this.value;renderAgg();renderSettlement()">${payOpts}</select>
+      <select onchange="entries[${i}].category=this.value;renderAgg()">${catOpts}</select>
+      <select onchange="entries[${i}].target=this.value;renderAgg();renderSettlement()">${tgtOpts}</select>
+      <button class="btn btn-danger-ghost btn-sm" onclick="deleteEntry(${i})" title="削除">✕</button>`;
+    list.appendChild(row);
+  });
+}
+
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function addEntry() { entries.push(blankEntry()); renderEntries(); }
+
+function deleteEntry(i) {
+  entries.splice(i, 1);
+  if (!entries.length) entries = [blankEntry()];
+  renderEntries(); renderAgg(); renderSettlement();
+}
+
+async function saveData() {
+  const btn = $('save-btn'); btn.disabled = true;
+  const name = sheetName();
+  try {
+    await ensureSheet(name);
+    const header = [['日付','品名','金額','支払方法','カテゴリ','対象者']];
+    const rows = entries.filter(e => e.name || e.amount)
+      .map(e => [e.date, e.name, parseFloat(e.amount)||0, e.payment, e.category, e.target]);
+    const totalRows = rows.length + 1;
+    // clear old data first
+    await gapi.client.sheets.spreadsheets.values.clear({ spreadsheetId: SHEET_ID, range: name + '!A1:F500' });
+    await gapi.client.sheets.spreadsheets.values.update({
+      spreadsheetId: SHEET_ID, range: name + '!A1:F' + totalRows,
+      valueInputOption: 'RAW', resource: { values: [...header, ...rows] }
+    });
+    showStatus('save-status', '✓ 保存しました', true);
+  } catch(e) { showStatus('save-status', '保存失敗: ' + e.message, false); }
+  btn.disabled = false;
+}
+
+// --- Aggregation ---
+function renderAgg() {
+  const totals = {};
+  categories.forEach(c => { totals[c] = { both:0, satoshi:0, shizuka:0 }; });
+  entries.forEach(e => {
+    const a = parseFloat(e.amount) || 0;
+    if (!totals[e.category]) totals[e.category] = { both:0, satoshi:0, shizuka:0 };
+    if (e.target === 'ふたり') totals[e.category].both += a;
+    else if (e.target === 'さとし') totals[e.category].satoshi += a;
+    else if (e.target === 'しずか') totals[e.category].shizuka += a;
+  });
+  let tb=0, ts=0, tz=0;
+  const tbody = $('agg-tbody'); tbody.innerHTML = '';
+  const allCats = [...new Set([...categories, ...Object.keys(totals)])];
+  allCats.forEach(cat => {
+    const d = totals[cat] || { both:0, satoshi:0, shizuka:0 };
+    const total = d.both + d.satoshi + d.shizuka;
+    if (!total) return;
+    tb += d.both; ts += d.satoshi; tz += d.shizuka;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${cat}</td><td>${fmt(d.both)}</td><td>${fmt(d.satoshi)}</td><td>${fmt(d.shizuka)}</td><td>${fmt(total)}</td>`;
+    tbody.appendChild(tr);
+  });
+  const grand = tb + ts + tz;
+  $('agg-tfoot').innerHTML = `<tr><td>合計</td><td>${fmt(tb)}</td><td>${fmt(ts)}</td><td>${fmt(tz)}</td><td>${fmt(grand)}</td></tr>`;
+  $('m-total').textContent = fmt(grand);
+  $('m-both').textContent  = fmt(tb);
+  $('m-satoshi').textContent = fmt(ts);
+  $('m-shizuka').textContent = fmt(tz);
+}
+
+// --- Settlement ---
+function renderSettlement() {
+  let amex=0, mits=0, advS=0, advZ=0;
+  entries.forEach(e => {
+    const a = parseFloat(e.amount) || 0;
+    if (e.payment === 'Amex') amex += a;
+    else if (e.payment === '三菱地所') mits += a;
+    else if (e.payment === '現金/個人(さとし)') {
+      if (e.target === 'ふたり') advS += a * (100 - ratioSatoshi) / 100;
+      else if (e.target === 'しずか') advS += a;
+    } else if (e.payment === '現金/個人(しずか)') {
+      if (e.target === 'ふたり') advZ += a * ratioSatoshi / 100;
+      else if (e.target === 'さとし') advZ += a;
+    }
+  });
+  const cardTotal = amex + mits;
+  const depS = Math.round(cardTotal * ratioSatoshi / 100);
+  const depZ = Math.round(cardTotal * (100 - ratioSatoshi) / 100);
+  const net = advS - advZ;
+
+  $('s-amex').textContent = fmt(amex);
+  $('s-mits').textContent = fmt(mits);
+  $('s-card-total').textContent = fmt(cardTotal);
+  $('s-dep-s').textContent = fmt(depS);
+  $('s-dep-z').textContent = fmt(depZ);
+  $('s-adv-s').textContent = fmt(advS);
+  $('s-adv-z').textContent = fmt(advZ);
+  $('s-net').textContent = (net >= 0 ? '+' : '') + fmt(net);
+
+  const txt = $('transfer-text');
+  if (Math.abs(net) < 1) {
+    txt.textContent = '立替精算なし（相殺済み）';
+  } else if (net > 0) {
+    txt.innerHTML = `<strong>しずか → さとし</strong> へ ${fmt(Math.abs(net))} を送金`;
+  } else {
+    txt.innerHTML = `<strong>さとし → しずか</strong> へ ${fmt(Math.abs(net))} を送金`;
+  }
+}
+
+// --- Year data ---
+async function loadYearData() {
+  $('year-label').textContent = currentYear + '年';
+  $('year-thead').innerHTML = '<tr><th>カテゴリ</th>' + Array.from({length:12},(_,i)=>`<th>${i+1}月</th>`).join('') + '<th>合計</th></tr>';
+  $('year-tbody').innerHTML = '<tr><td colspan="14" style="text-align:center;color:var(--text3);padding:20px">読み込み中...</td></tr>';
+
+  const yearData = {};
+  for (let m = 1; m <= 12; m++) {
+    try {
+      const r = await gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: SHEET_ID, range: currentYear + '年' + m + '月!A2:F500'
+      });
+      (r.result.values || []).forEach(row => {
+        const cat = row[4] || 'その他';
+        const a = parseFloat(row[2]) || 0;
+        if (!yearData[cat]) yearData[cat] = {};
+        yearData[cat][m] = (yearData[cat][m] || 0) + a;
+      });
+    } catch(e) {}
+  }
+
+  const tbody = $('year-tbody'); tbody.innerHTML = '';
+  const allCats = [...new Set([...categories, ...Object.keys(yearData)])];
+  const totRow = Array(12).fill(0);
+  allCats.forEach(cat => {
+    if (!yearData[cat]) return;
+    const vals = Array.from({length:12}, (_,i) => yearData[cat][i+1] || 0);
+    const total = vals.reduce((a,b)=>a+b,0);
+    if (!total) return;
+    vals.forEach((v,i) => totRow[i] += v);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${cat}</td>${vals.map(v => `<td>${v ? fmt(v) : '-'}</td>`).join('')}<td>${fmt(total)}</td>`;
+    tbody.appendChild(tr);
+  });
+  const grandTotal = totRow.reduce((a,b)=>a+b,0);
+  $('year-tfoot').innerHTML = `<tr><td>合計</td>${totRow.map(v=>`<td>${fmt(v)}</td>`).join('')}<td>${fmt(grandTotal)}</td></tr>`;
+}
+
+// --- Helpers ---
+async function ensureSheet(name) {
+  const meta = await gapi.client.sheets.spreadsheets.get({ spreadsheetId: SHEET_ID });
+  const exists = meta.result.sheets.some(s => s.properties.title === name);
+  if (!exists) {
+    await gapi.client.sheets.spreadsheets.batchUpdate({
+      spreadsheetId: SHEET_ID,
+      resource: { requests: [{ addSheet: { properties: { title: name } } }] }
+    });
+  }
+}
+
+function showStatus(id, msg, ok) {
+  const el = $(id);
+  el.textContent = msg;
+  el.className = 'status ' + (ok ? 'ok' : 'err');
+  setTimeout(() => { el.textContent = ''; el.className = 'status'; }, 3000);
+}
+
+function changeMonth(d) {
+  currentMonth += d;
+  if (currentMonth > 12) { currentMonth = 1; currentYear++; }
+  if (currentMonth < 1)  { currentMonth = 12; currentYear--; }
+  updateMonthTitle();
+  if (accessToken) loadMonthData();
+}
+
+function updateMonthTitle() {
+  $('month-title').textContent = currentYear + '年' + currentMonth + '月';
+}
+
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  ['monthly','yearly','settings'].forEach(t => { $('tab-'+t).style.display = t===name ? '' : 'none'; });
+  if (name === 'yearly') loadYearData();
+}
+
+// GAPI ready callback
+window.gapiLoaded = gapiLoaded;
+document.querySelector('script[src*="api.js"]').setAttribute('onload','gapiLoaded()');
+</script>
+</body>
+</html>
