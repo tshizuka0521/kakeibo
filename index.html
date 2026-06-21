@@ -32,7 +32,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
 .btn-sm{padding:5px 10px;font-size:12px}
 .btn-ghost{border-color:transparent;color:var(--text3)}
 .btn-ghost:hover{color:var(--danger);background:var(--danger-bg)}
-/* signin */
 .signin-wrap{text-align:center;padding:60px 20px;background:var(--bg);border-radius:var(--radius);box-shadow:var(--shadow)}
 .signin-wrap h2{font-size:20px;font-weight:600;margin-bottom:8px}
 .signin-wrap p{color:var(--text2);margin-bottom:24px;line-height:1.7}
@@ -40,29 +39,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
 .google-btn:hover{background:var(--bg3)}
 .google-btn svg{width:18px;height:18px;flex-shrink:0}
 .signin-note{margin-top:16px;font-size:12px;color:var(--text3)}
-/* tabs */
 .tabs{display:flex;gap:2px;background:var(--bg3);border-radius:var(--radius-sm);padding:3px;margin-bottom:16px;width:fit-content}
 .tab{padding:7px 18px;border-radius:6px;border:none;background:none;cursor:pointer;font-size:13px;color:var(--text2);font-family:inherit;transition:all .15s}
 .tab.active{background:var(--bg);color:var(--text);font-weight:600;box-shadow:var(--shadow)}
-/* month nav */
 .month-nav{display:flex;align-items:center;gap:12px;margin-bottom:16px}
 .month-title{font-size:18px;font-weight:700;min-width:110px;text-align:center}
-/* card */
 .card{background:var(--bg);border-radius:var(--radius);padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
 .card-title{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;margin-bottom:16px}
 .card-title .icon{width:26px;height:26px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--accent-bg)}
-/* variable entry table */
-.tbl-head{display:grid;grid-template-columns:44px 130px 1fr 90px 90px 150px 36px;gap:6px;padding:0 4px 8px;border-bottom:1px solid var(--border)}
+/* 変動費テーブル */
+.tbl-head{display:grid;grid-template-columns:44px 130px 1fr 100px 90px 140px 36px;gap:6px;padding:0 4px 8px;border-bottom:1px solid var(--border)}
 .tbl-head span{font-size:11px;font-weight:600;color:var(--text3)}
-.entry-row{display:grid;grid-template-columns:44px 130px 1fr 90px 90px 150px 36px;gap:6px;align-items:center;padding:4px;border-radius:var(--radius-sm)}
+.entry-row{display:grid;grid-template-columns:44px 130px 1fr 100px 90px 140px 36px;gap:6px;align-items:center;padding:4px;border-radius:var(--radius-sm)}
 .entry-row:hover{background:var(--bg2)}
-/* fixed entry table */
-.ftbl-head{display:grid;grid-template-columns:130px 1fr 90px 150px 90px 36px;gap:6px;padding:0 4px 8px;border-bottom:1px solid var(--border)}
-.fentry-row{display:grid;grid-template-columns:130px 1fr 90px 150px 90px 36px;gap:6px;align-items:center;padding:4px;border-radius:var(--radius-sm)}
+/* 固定費テーブル */
+.ftbl-head{display:grid;grid-template-columns:110px 160px 90px 140px 110px;gap:6px;padding:0 4px 8px;border-bottom:1px solid var(--border)}
+.fentry-row{display:grid;grid-template-columns:110px 160px 90px 140px 110px;gap:6px;align-items:center;padding:4px;border-radius:var(--radius-sm)}
 .fentry-row:hover{background:var(--bg2)}
-input[type=number],input[type=text],.entry-row select,.fentry-row select{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;background:var(--bg);color:var(--text);font-family:inherit;width:100%}
-input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-row select:focus{outline:none;border-color:var(--accent)}
-.day-input{width:100%;height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;text-align:center;background:var(--bg);color:var(--text);font-family:inherit}
+select,input[type=text]{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;background:var(--bg);color:var(--text);font-family:inherit;width:100%}
+select:focus,input[type=text]:focus{outline:none;border-color:var(--accent)}
+.num-input{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;background:var(--bg);color:var(--text);font-family:inherit;width:100%;text-align:right}
+.num-input:focus{outline:none;border-color:var(--accent)}
+.day-input{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;text-align:center;background:var(--bg);color:var(--text);font-family:inherit;width:100%}
 .day-input:focus{outline:none;border-color:var(--accent)}
 .entries-list{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
 .add-row-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px dashed var(--border2);border-radius:var(--radius-sm);background:none;cursor:pointer;font-size:13px;color:var(--text3);font-family:inherit}
@@ -71,12 +69,10 @@ input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-
 .status{font-size:12px;min-height:18px}
 .status.ok{color:var(--accent)}
 .status.err{color:var(--danger)}
-/* metrics */
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
 .metric{background:var(--bg2);border-radius:var(--radius-sm);padding:14px;text-align:center}
 .metric-label{font-size:11px;color:var(--text3);font-weight:600;margin-bottom:6px}
 .metric-value{font-size:20px;font-weight:700}
-/* agg table */
 .agg-table{width:100%;border-collapse:collapse}
 .agg-table th{padding:8px 10px;font-size:11px;font-weight:600;color:var(--text3);text-align:right;border-bottom:1px solid var(--border)}
 .agg-table th:first-child,.agg-table th:nth-child(2){text-align:left}
@@ -85,21 +81,25 @@ input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-
 .agg-table td:first-child{color:var(--text3);font-size:12px}
 .agg-table tbody tr:hover td{background:var(--bg2)}
 .agg-table tfoot td{font-weight:700;border-top:2px solid var(--border2);border-bottom:none;font-size:14px}
-/* settlement */
-.settlement-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.settle-card{background:var(--bg2);border-radius:var(--radius-sm);padding:16px}
-.settle-card h3{font-size:12px;font-weight:600;color:var(--text3);margin-bottom:12px}
-.settle-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px}
-.settle-row:last-child{border-bottom:none;font-weight:700;font-size:14px;padding-top:10px;margin-top:4px}
-.amount-out{color:var(--danger)}
-.transfer-box{background:var(--info-bg);border:1px solid #bed3f0;border-radius:var(--radius-sm);padding:16px}
-.transfer-label{font-size:11px;font-weight:600;color:var(--info);margin-bottom:8px}
-.transfer-main{font-size:15px;font-weight:600;color:var(--info)}
-/* ratio */
+/* 精算 */
+.transfer-box{border-radius:var(--radius-sm);padding:16px;margin-bottom:10px}
+.transfer-box.blue{background:var(--info-bg);border:1px solid #bed3f0}
+.transfer-box.green{background:var(--accent-bg);border:1px solid #a8d5b8}
+.transfer-label{font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px}
+.transfer-label.blue{color:var(--info)}
+.transfer-label.green{color:var(--accent)}
+.transfer-row{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:14px;font-weight:600;border-bottom:1px solid rgba(0,0,0,0.07)}
+.transfer-row:last-child{border-bottom:none}
+.transfer-row .arrow{font-size:18px}
+.transfer-row .amount{margin-left:auto;font-size:17px}
+.transfer-row.blue{color:var(--info)}
+.transfer-row.green{color:var(--accent)}
+.transfer-row.none{color:var(--text3);font-weight:400;font-size:13px}
+/* 設定 */
 .ratio-row{display:flex;align-items:center;gap:10px;font-size:14px;padding:14px;background:var(--bg2);border-radius:var(--radius-sm)}
 .ratio-input{width:64px;height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:14px;font-weight:600;text-align:center;background:var(--bg);color:var(--text);font-family:inherit}
 .ratio-input:focus{outline:none;border-color:var(--accent)}
-/* year table */
+/* 年間 */
 .year-wrap{overflow-x:auto}
 .year-table{width:100%;border-collapse:collapse;font-size:12px;min-width:900px}
 .year-table th{padding:8px;border-bottom:1px solid var(--border);font-size:11px;font-weight:600;color:var(--text3);text-align:right;white-space:nowrap}
@@ -113,14 +113,12 @@ input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-
 .year-table tbody tr:hover td{background:var(--bg2)}
 .year-table tfoot td{font-weight:700;border-top:2px solid var(--border2);border-bottom:none}
 .sheet-id{font-size:11px;background:var(--bg2);padding:8px 12px;border-radius:var(--radius-sm);word-break:break-all;font-family:monospace;color:var(--text2);border:1px solid var(--border);margin-top:8px}
-.section-label{font-size:12px;font-weight:600;color:var(--text2);margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
 .info-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:#7a6000;margin-bottom:12px}
 @media(max-width:700px){
-  .tbl-head,.entry-row{grid-template-columns:40px 1fr 80px 36px}
-  .tbl-head span:nth-child(n+3):not(:last-child),.entry-row *:nth-child(n+3):not(:last-child){display:none}
-  .ftbl-head,.fentry-row{grid-template-columns:1fr 80px 36px}
-  .ftbl-head span:nth-child(n+2):not(:nth-child(3)):not(:last-child),.fentry-row *:nth-child(n+2):not(:nth-child(3)):not(:last-child){display:none}
-  .settlement-grid{grid-template-columns:1fr}
+  .tbl-head,.entry-row{grid-template-columns:40px 1fr 90px 36px}
+  .tbl-head span:nth-child(n+3):not(:nth-child(4)):not(:last-child),.entry-row *:nth-child(n+3):not(:nth-child(4)):not(:last-child){display:none}
+  .ftbl-head,.fentry-row{grid-template-columns:1fr 100px}
+  .ftbl-head span:not(:first-child):not(:last-child),.fentry-row *:not(:first-child):not(:last-child){display:none}
   .metrics{grid-template-columns:repeat(2,1fr)}
 }
 </style>
@@ -155,7 +153,6 @@ input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-
       <button class="tab" onclick="switchTab('settings',this)">設定</button>
     </div>
 
-    <!-- 月次タブ -->
     <div id="tab-monthly">
       <div class="month-nav">
         <button class="btn" onclick="changeMonth(-1)">◀</button>
@@ -166,9 +163,9 @@ input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-
       <!-- 固定費 -->
       <div class="card">
         <div class="card-title"><span class="icon">📌</span>固定費</div>
-        <div class="info-box">カテゴリシートのテンプレートから読み込まれます。金額を入力して保存してください。</div>
+        <div class="info-box">カテゴリシートのテンプレートを読み込みます。金額のみ入力してください。</div>
         <div class="ftbl-head">
-          <span>カテゴリ1</span><span>カテゴリ2</span><span>対象者</span><span>支払方法</span><span>金額</span><span></span>
+          <span>カテゴリ1</span><span>カテゴリ2</span><span>対象者</span><span>支払方法</span><span style="text-align:right">金額</span>
         </div>
         <div class="entries-list" id="fixed-list"></div>
         <div class="save-row">
@@ -181,7 +178,7 @@ input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-
       <div class="card">
         <div class="card-title"><span class="icon">📝</span>変動費</div>
         <div class="tbl-head">
-          <span>日</span><span>カテゴリ</span><span>内訳</span><span>金額</span><span>対象者</span><span>支払方法</span><span></span>
+          <span>日</span><span>カテゴリ</span><span>内訳</span><span style="text-align:right">金額</span><span>対象者</span><span>支払方法</span><span></span>
         </div>
         <div class="entries-list" id="entries-list"></div>
         <button class="add-row-btn" onclick="addEntry()">＋ 行を追加</button>
@@ -210,36 +207,19 @@ input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-
       <!-- 精算 -->
       <div class="card">
         <div class="card-title"><span class="icon">🧮</span>精算</div>
-        <div class="settlement-grid">
-          <div class="settle-card">
-            <h3>💳 家族カード — 引き落とし口座への入金額</h3>
-            <div class="settle-row"><span>Amex 合計</span><span id="s-amex">¥0</span></div>
-            <div class="settle-row"><span>三菱地所 合計</span><span id="s-mits">¥0</span></div>
-            <div class="settle-row"><span>家族カード 合計</span><span id="s-card-total">¥0</span></div>
-            <div class="settle-row" style="margin-top:8px;border-top:1px solid var(--border2);padding-top:10px">
-              <span>さとし 入金 (<span id="lbl-ratio-s">45</span>%)</span>
-              <span id="s-dep-s" class="amount-out">¥0</span>
-            </div>
-            <div class="settle-row">
-              <span>しずか 入金 (<span id="lbl-ratio-z">55</span>%)</span>
-              <span id="s-dep-z" class="amount-out">¥0</span>
-            </div>
-          </div>
-          <div class="settle-card">
-            <h3>🔄 立替精算（相殺後）</h3>
-            <div class="settle-row"><span>さとし 立替額</span><span id="s-adv-s">¥0</span></div>
-            <div class="settle-row"><span>しずか 立替額</span><span id="s-adv-z">¥0</span></div>
-            <div class="settle-row"><span>相殺後 差額</span><span id="s-net">¥0</span></div>
-          </div>
+        <div id="settlement-detail" style="font-size:12px;color:var(--text3);margin-bottom:14px"></div>
+        <div id="rakuten-box" class="transfer-box blue">
+          <div class="transfer-label blue">🏦 楽天銀行への送金</div>
+          <div id="rakuten-rows"></div>
         </div>
-        <div class="transfer-box">
-          <div class="transfer-label">送金指示</div>
-          <div class="transfer-main" id="transfer-text">-</div>
+        <div id="transfer-box" class="transfer-box green">
+          <div class="transfer-label green">🔄 立替精算（相殺後）</div>
+          <div id="transfer-rows"></div>
         </div>
       </div>
     </div>
 
-    <!-- 年間タブ -->
+    <!-- 年間 -->
     <div id="tab-yearly" style="display:none">
       <div class="card">
         <div class="card-title"><span class="icon">📅</span>年間集計 — <span id="year-label"></span></div>
@@ -253,11 +233,11 @@ input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-
       </div>
     </div>
 
-    <!-- 設定タブ -->
+    <!-- 設定 -->
     <div id="tab-settings" style="display:none">
       <div class="card">
         <div class="card-title"><span class="icon">⚖️</span>負担割合（月別）</div>
-        <p style="font-size:12px;color:var(--text3);margin-bottom:14px">表示中の月の精算に適用されます。変更後は「保存する」を押してください。</p>
+        <p style="font-size:12px;color:var(--text3);margin-bottom:14px">変更した月以降に自動反映されます。月ごとに上書きも可能です。</p>
         <div class="ratio-row">
           <span id="ratio-month-label" style="font-weight:600;min-width:80px"></span>
           <span>さとし</span>
@@ -281,541 +261,504 @@ input[type=number]:focus,input[type=text]:focus,.entry-row select:focus,.fentry-
 </div>
 
 <script>
-var CLIENT_ID = '51278390110-ag20mhlgof9jefuhdhu1c0lolmd166i8.apps.googleusercontent.com';
-var SHEET_ID  = '1tZY13dpKZ4O_DansTiXbY4z6AhV-Ob0r3Bc6kUL97nc';
-var SCOPES    = 'https://www.googleapis.com/auth/spreadsheets';
-// 支払方法：家族カード2種 + 個人払い4種
-var PAYMENTS  = ['Amex','三菱地所','さとしWallet','しずかWallet','現金/個人(さとし)','現金/個人(しずか)'];
-var FAMILY_CARDS = ['Amex','三菱地所'];
-// 個人払い扱い（立替精算対象）
-var SATOSHI_PERSONAL = ['さとしWallet','現金/個人(さとし)'];
-var SHIZUKA_PERSONAL = ['しずかWallet','現金/個人(しずか)'];
-var TARGETS   = ['ふたり','さとし','しずか'];
+var CLIENT_ID='51278390110-ag20mhlgof9jefuhdhu1c0lolmd166i8.apps.googleusercontent.com';
+var SHEET_ID='1tZY13dpKZ4O_DansTiXbY4z6AhV-Ob0r3Bc6kUL97nc';
+var SCOPES='https://www.googleapis.com/auth/spreadsheets';
+var PAY_FIXED=['Amex','三菱地所','さとしWallet','しずかWallet'];
+var PAY_VAR=['Amex','さとしWallet','しずかWallet'];
+var FAMILY_CARDS=['Amex','三菱地所'];
+var SATOSHI_PAY=['さとしWallet'];
+var SHIZUKA_PAY=['しずかWallet'];
+var TARGETS=['ふたり','さとし','しずか'];
 
-var tokenClient = null;
-var gapiReady = false;
-var gsiReady = false;
-var accessToken = null;
-var currentYear = new Date().getFullYear();
-var currentMonth = new Date().getMonth() + 1;
+var tokenClient=null,gapiReady=false,gsiReady=false,accessToken=null;
+var currentYear=new Date().getFullYear(),currentMonth=new Date().getMonth()+1;
+var fixedTemplates=[],varCategories=[];
+// ratioChanges: [{fromYear,fromMonth,ratio}] 変更履歴、時系列順
+var ratioChanges=[];
+var entries=[],fixedEntries=[];
 
-// カテゴリデータ
-var fixedTemplates = []; // [{cat1,cat2,target,payment}]
-var varCategories = [];  // [string]
+var fmt=function(n){return '¥'+Math.round(n).toLocaleString('ja-JP');};
+var $=function(id){return document.getElementById(id);};
+var monthKey=function(y,m){return y*100+m;};// 数値で比較
 
-// 月別負担割合 {"2025_06": 45, ...}
-var ratioMap = {};
-
-// 変動費エントリ
-var entries = [];
-// 固定費エントリ（金額のみユーザー入力、他はテンプレから）
-var fixedEntries = []; // [{cat1,cat2,target,payment,amount}]
-
-var fmt = function(n){ return '¥' + Math.round(n).toLocaleString('ja-JP'); };
-var $ = function(id){ return document.getElementById(id); };
-var monthKey = function(y,m){ return y + '_' + (m < 10 ? '0' : '') + m; };
-
-function currentRatio(){
-  var k = monthKey(currentYear, currentMonth);
-  return (ratioMap[k] !== undefined) ? ratioMap[k] : 45;
+// 現在月の負担割合を取得（直近の変更を適用）
+function getRatio(year,month){
+  var key=monthKey(year,month);
+  var ratio=45;// デフォルト
+  for(var i=0;i<ratioChanges.length;i++){
+    var c=ratioChanges[i];
+    if(monthKey(c.fromYear,c.fromMonth)<=key) ratio=c.ratio;
+  }
+  return ratio;
 }
+function currentRatio(){ return getRatio(currentYear,currentMonth); }
 
 // ---- ライブラリ読み込み ----
 function loadGAPI(){
-  var s = document.createElement('script');
-  s.src = 'https://apis.google.com/js/api.js';
-  s.onload = function(){
-    gapi.load('client', function(){
-      gapi.client.init({
-        discoveryDocs:['https://sheets.googleapis.com/$discovery/rest?version=v4']
-      }).then(function(){
-        gapiReady = true;
-        loadGSI();
+  var s=document.createElement('script');
+  s.src='https://apis.google.com/js/api.js';
+  s.onload=function(){
+    gapi.load('client',function(){
+      gapi.client.init({discoveryDocs:['https://sheets.googleapis.com/$discovery/rest?version=v4']}).then(function(){
+        gapiReady=true; loadGSI();
       });
     });
   };
   document.head.appendChild(s);
 }
-
 function loadGSI(){
-  var s = document.createElement('script');
-  s.src = 'https://accounts.google.com/gsi/client';
-  s.onload = function(){
-    gsiReady = true;
-    tokenClient = google.accounts.oauth2.initTokenClient({
-      client_id: CLIENT_ID, scope: SCOPES,
-      callback: function(resp){
-        if(resp.error){ alert('認証エラー: ' + resp.error); return; }
-        accessToken = resp.access_token;
-        onSignedIn();
+  var s=document.createElement('script');
+  s.src='https://accounts.google.com/gsi/client';
+  s.onload=function(){
+    gsiReady=true;
+    tokenClient=google.accounts.oauth2.initTokenClient({
+      client_id:CLIENT_ID,scope:SCOPES,
+      callback:function(resp){
+        if(resp.error){alert('認証エラー: '+resp.error);return;}
+        accessToken=resp.access_token; onSignedIn();
       }
     });
-    $('loading-note').textContent = 'サインインしてデータを共有できます';
+    $('loading-note').textContent='サインインしてデータを共有できます';
   };
-  s.onerror = function(){ $('loading-note').textContent = '読み込みエラー。ページを再読み込みしてください。'; };
+  s.onerror=function(){$('loading-note').textContent='読み込みエラー。ページを再読み込みしてください。';};
   document.head.appendChild(s);
 }
-
 function handleAuth(){
   if(accessToken){
-    accessToken = null;
-    $('signin-view').style.display = '';
-    $('main-view').style.display = 'none';
-    $('auth-btn').textContent = 'Googleでサインイン';
-    $('user-badge').style.display = 'none';
+    accessToken=null;
+    $('signin-view').style.display='';$('main-view').style.display='none';
+    $('auth-btn').textContent='Googleでサインイン';$('user-badge').style.display='none';
     return;
   }
-  if(!gapiReady || !gsiReady || !tokenClient){
-    alert('まだ読み込み中です。数秒後にもう一度お試しください。');
-    return;
-  }
+  if(!gapiReady||!gsiReady||!tokenClient){alert('まだ読み込み中です。数秒後にもう一度お試しください。');return;}
   tokenClient.requestAccessToken({prompt:'consent'});
 }
-
 async function onSignedIn(){
-  $('signin-view').style.display = 'none';
-  $('main-view').style.display = '';
-  $('auth-btn').textContent = 'サインアウト';
-  var b = $('user-badge');
-  b.style.display = 'inline-flex';
-  b.textContent = '✓ 接続中';
+  $('signin-view').style.display='none';$('main-view').style.display='';
+  $('auth-btn').textContent='サインアウト';
+  var b=$('user-badge');b.style.display='inline-flex';b.textContent='✓ 接続中';
   updateMonthTitle();
   await loadCategorySheet();
-  await loadRatioMap();
+  await loadRatioChanges();
   await loadMonthData();
   updateRatioUI();
 }
 
-// ---- カテゴリシート読み込み ----
+// ---- カテゴリシート読み込み（4行目以降、3行目はヘッダ）----
 async function loadCategorySheet(){
   try{
-    // B:E = 固定費、G = 変動費
-    var r = await gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: SHEET_ID, range: 'カテゴリ!B1:G100'
+    var r=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:'カテゴリ!B4:G200'});
+    var rows=r.result.values||[];
+    fixedTemplates=[];varCategories=[];
+    rows.forEach(function(row){
+      // B=カテゴリ1, C=カテゴリ2, D=対象者, E=支払方法（固定費）
+      if(row[0]||row[1]){
+        fixedTemplates.push({cat1:row[0]||'',cat2:row[1]||'',target:row[2]||'ふたり',payment:row[3]||'Amex'});
+      }
+      // G=変動費カテゴリ（index 5 from B）
+      if(row[5]) varCategories.push(row[5]);
     });
-    var rows = r.result.values || [];
-    fixedTemplates = [];
-    varCategories = [];
-    // 1行目はヘッダー（カテゴリ1/カテゴリ2/対象者/支払方法 | カテゴリ）
-    for(var i = 1; i < rows.length; i++){
-      var row = rows[i];
-      // 固定費: col0=カテゴリ1, col1=カテゴリ2, col2=対象者, col3=支払方法
-      if(row[0] || row[1]){
-        fixedTemplates.push({
-          cat1: row[0] || '',
-          cat2: row[1] || '',
-          target: row[2] || 'ふたり',
-          payment: row[3] || 'Amex'
-        });
-      }
-      // 変動費: col5=カテゴリ (G列はBからの相対で index 5)
-      if(row[5]){
-        varCategories.push(row[5]);
-      }
-    }
   }catch(e){
-    console.warn('カテゴリシート読み込み失敗:', e);
-    fixedTemplates = [];
-    varCategories = ['食費','日用品','医療費','交通費','外食','娯楽','衣服','水道光熱費','通信費','その他'];
+    console.warn('カテゴリシート読み込み失敗:',e);
+    fixedTemplates=[];
+    varCategories=['食費','日用品','医療費','交通費','外食','娯楽','衣服','水道光熱費','通信費','その他'];
   }
 }
 
-// ---- 負担割合マップ読み込み ----
-async function loadRatioMap(){
+// ---- 負担割合変更履歴 ----
+async function loadRatioChanges(){
   try{
-    var r = await gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: SHEET_ID, range: '設定!A1:B50'
-    });
-    var rows = r.result.values || [];
-    ratioMap = {};
+    var r=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:'設定!A1:C200'});
+    var rows=r.result.values||[];
+    ratioChanges=[];
     rows.forEach(function(row){
-      if(row[0] && row[0].match(/^\d{4}_\d{2}$/)){
-        ratioMap[row[0]] = parseInt(row[1]) || 45;
-      }
+      // A=fromYear, B=fromMonth, C=ratio
+      var y=parseInt(row[0]),m=parseInt(row[1]),rt=parseInt(row[2]);
+      if(y&&m&&!isNaN(rt)) ratioChanges.push({fromYear:y,fromMonth:m,ratio:rt});
     });
-  }catch(e){ ratioMap = {}; }
+    // 時系列順にソート
+    ratioChanges.sort(function(a,b){return monthKey(a.fromYear,a.fromMonth)-monthKey(b.fromYear,b.fromMonth);});
+  }catch(e){ratioChanges=[];}
 }
 
 async function saveRatio(){
-  var v = Math.min(100, Math.max(0, parseInt($('r-satoshi').value) || 0));
-  var k = monthKey(currentYear, currentMonth);
-  ratioMap[k] = v;
-  // 設定シートに保存
-  var values = Object.keys(ratioMap).map(function(key){ return [key, ratioMap[key]]; });
+  var v=Math.min(100,Math.max(0,parseInt($('r-satoshi').value)||0));
+  // 同じ月があれば上書き、なければ追加
+  var found=false;
+  for(var i=0;i<ratioChanges.length;i++){
+    if(ratioChanges[i].fromYear===currentYear&&ratioChanges[i].fromMonth===currentMonth){
+      ratioChanges[i].ratio=v; found=true; break;
+    }
+  }
+  if(!found) ratioChanges.push({fromYear:currentYear,fromMonth:currentMonth,ratio:v});
+  ratioChanges.sort(function(a,b){return monthKey(a.fromYear,a.fromMonth)-monthKey(b.fromYear,b.fromMonth);});
+  var values=ratioChanges.map(function(c){return [c.fromYear,c.fromMonth,c.ratio];});
   try{
     await ensureSheet('設定');
-    await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID, range:'設定!A1:B100'});
+    await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID,range:'設定!A1:C200'});
     if(values.length){
       await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId:SHEET_ID, range:'設定!A1:B'+values.length,
-        valueInputOption:'RAW', resource:{values:values}
+        spreadsheetId:SHEET_ID,range:'設定!A1:C'+values.length,
+        valueInputOption:'RAW',resource:{values:values}
       });
     }
-    showStatus('ratio-status','✓ 保存しました', true);
-    updateRatioUI();
-    renderSettlement();
-  }catch(e){ showStatus('ratio-status','保存失敗: '+e.message, false); }
+    showStatus('ratio-status','✓ 保存しました（この月以降に反映）',true);
+    updateRatioUI();renderSettlement();
+  }catch(e){showStatus('ratio-status','保存失敗: '+e.message,false);}
 }
-
 function syncRatio(){
-  var v = Math.min(100, Math.max(0, parseInt($('r-satoshi').value)||0));
-  $('r-shizuka').value = 100 - v;
-  renderSettlement();
+  var v=Math.min(100,Math.max(0,parseInt($('r-satoshi').value)||0));
+  $('r-shizuka').value=100-v;renderSettlement();
 }
-
 function updateRatioUI(){
-  var r = currentRatio();
-  $('r-satoshi').value = r;
-  $('r-shizuka').value = 100 - r;
-  $('lbl-ratio-s').textContent = r;
-  $('lbl-ratio-z').textContent = 100 - r;
-  $('ratio-month-label').textContent = currentYear+'年'+currentMonth+'月';
+  var r=currentRatio();
+  $('r-satoshi').value=r;$('r-shizuka').value=100-r;
+  $('ratio-month-label').textContent=currentYear+'年'+currentMonth+'月';
 }
 
-// ---- 月次データ読み込み ----
+// ---- 月次データ ----
 async function loadMonthData(){
-  var name = varSheetName();
-  var fname = fixedSheetName();
   // 変動費
   try{
-    var r = await gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId:SHEET_ID, range:name+'!A2:F500'
+    var r=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:varSheetName()+'!A2:F500'});
+    var rows=r.result.values||[];
+    entries=rows.map(function(r){
+      return {day:r[0]||'',cat:r[1]||'',detail:r[2]||'',amount:r[3]||'',target:r[4]||TARGETS[0],payment:r[5]||PAY_VAR[0]};
     });
-    var rows = r.result.values || [];
-    entries = rows.map(function(r){
-      return {
-        day: r[0]||'', cat: r[1]||'', detail: r[2]||'',
-        amount: r[3]||'', target: r[4]||TARGETS[0], payment: r[5]||PAYMENTS[0]
-      };
-    });
-  }catch(e){ entries = []; }
-  if(!entries.length) entries = [blankEntry()];
-
+  }catch(e){entries=[];}
+  if(!entries.length) entries=[blankEntry()];
   // 固定費
   try{
-    var fr = await gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId:SHEET_ID, range:fname+'!A2:E500'
-    });
-    var frows = fr.result.values || [];
-    // テンプレートに金額をマージ
-    fixedEntries = fixedTemplates.map(function(tpl, i){
-      var saved = frows[i];
+    var fr=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:fixedSheetName()+'!A2:E500'});
+    var frows=fr.result.values||[];
+    fixedEntries=fixedTemplates.map(function(tpl,i){
+      var saved=frows[i];
       return {
-        cat1: tpl.cat1, cat2: tpl.cat2,
-        target: saved ? (saved[2]||tpl.target) : tpl.target,
-        payment: saved ? (saved[3]||tpl.payment) : tpl.payment,
-        amount: saved ? (saved[4]||'') : ''
+        cat1:tpl.cat1,cat2:tpl.cat2,
+        target:saved?(saved[2]||tpl.target):tpl.target,
+        payment:saved?(saved[3]||tpl.payment):tpl.payment,
+        amount:saved?(saved[4]||''):''
       };
     });
   }catch(e){
-    fixedEntries = fixedTemplates.map(function(tpl){
-      return { cat1:tpl.cat1, cat2:tpl.cat2, target:tpl.target, payment:tpl.payment, amount:'' };
+    fixedEntries=fixedTemplates.map(function(tpl){
+      return {cat1:tpl.cat1,cat2:tpl.cat2,target:tpl.target,payment:tpl.payment,amount:''};
     });
   }
-
-  renderEntries();
-  renderFixed();
-  renderAgg();
-  renderSettlement();
-  updateRatioUI();
+  renderEntries();renderFixed();renderAgg();renderSettlement();updateRatioUI();
 }
+function varSheetName(){return currentYear+'年'+currentMonth+'月_変動';}
+function fixedSheetName(){return currentYear+'年'+currentMonth+'月_固定';}
+function blankEntry(){return {day:'',cat:varCategories[0]||'',detail:'',amount:'',target:TARGETS[0],payment:PAY_VAR[0]};}
 
-function varSheetName(){ return currentYear+'年'+currentMonth+'月_変動'; }
-function fixedSheetName(){ return currentYear+'年'+currentMonth+'月_固定'; }
-
-function blankEntry(){
-  return { day:'', cat: varCategories[0]||'', detail:'', amount:'', target:TARGETS[0], payment:PAYMENTS[0] };
+// ---- カンマ表示ヘルパー ----
+function fmtInput(val){
+  var n=parseFloat(String(val).replace(/,/g,''));
+  if(isNaN(n)||n===0) return '';
+  return Math.round(n).toLocaleString('ja-JP');
 }
+function parseAmount(val){return parseFloat(String(val).replace(/,/g,''))||0;}
 
-// ---- 変動費レンダリング ----
+// ---- 変動費 ----
 function renderEntries(){
-  var list = $('entries-list'); list.innerHTML = '';
-  entries.forEach(function(e, i){
-    var row = document.createElement('div');
-    row.className = 'entry-row';
-    var catOpts = varCategories.map(function(c){
-      return '<option value="'+escHtml(c)+'"'+(e.cat===c?' selected':'')+'>'+escHtml(c)+'</option>';
-    }).join('');
-    var tgtOpts = TARGETS.map(function(t){
-      return '<option value="'+t+'"'+(e.target===t?' selected':'')+'>'+t+'</option>';
-    }).join('');
-    var payOpts = PAYMENTS.map(function(p){
-      return '<option value="'+p+'"'+(e.payment===p?' selected':'')+'>'+p+'</option>';
-    }).join('');
-    row.innerHTML =
-      '<input class="day-input" type="number" value="'+escHtml(e.day)+'" placeholder="日" min="1" max="31" oninput="entries['+i+'].day=this.value">'+
+  var list=$('entries-list');list.innerHTML='';
+  entries.forEach(function(e,i){
+    var row=document.createElement('div');row.className='entry-row';
+    var catOpts=varCategories.map(function(c){return '<option value="'+escHtml(c)+'"'+(e.cat===c?' selected':'')+'>'+escHtml(c)+'</option>';}).join('');
+    var tgtOpts=TARGETS.map(function(t){return '<option value="'+t+'"'+(e.target===t?' selected':'')+'>'+t+'</option>';}).join('');
+    var payOpts=PAY_VAR.map(function(p){return '<option value="'+p+'"'+(e.payment===p?' selected':'')+'>'+p+'</option>';}).join('');
+    row.innerHTML=
+      '<input class="day-input" type="text" value="'+escHtml(e.day)+'" placeholder="日" maxlength="2" oninput="entries['+i+'].day=this.value">'+
       '<select onchange="entries['+i+'].cat=this.value;renderAgg()">'+catOpts+'</select>'+
       '<input type="text" value="'+escHtml(e.detail)+'" placeholder="内訳" oninput="entries['+i+'].detail=this.value">'+
-      '<input type="number" value="'+escHtml(e.amount)+'" placeholder="0" min="0" oninput="entries['+i+'].amount=this.value;renderAgg();renderSettlement()">'+
+      '<input class="num-input" type="text" value="'+fmtInput(e.amount)+'" placeholder="0" '+
+        'oninput="entries['+i+'].amount=this.value" '+
+        'onblur="entries['+i+'].amount=this.value;this.value=fmtInput(this.value);renderAgg();renderSettlement()">'+
       '<select onchange="entries['+i+'].target=this.value;renderAgg();renderSettlement()">'+tgtOpts+'</select>'+
-      '<select onchange="entries['+i+'].payment=this.value;renderAgg();renderSettlement()">'+payOpts+'</select>'+
+      '<select onchange="entries['+i+'].payment=this.value;renderSettlement()">'+payOpts+'</select>'+
       '<button class="btn btn-ghost btn-sm" onclick="deleteEntry('+i+')" title="削除">✕</button>';
     list.appendChild(row);
   });
 }
-
-function addEntry(){ entries.push(blankEntry()); renderEntries(); }
-
-function deleteEntry(i){
-  entries.splice(i,1);
-  if(!entries.length) entries=[blankEntry()];
-  renderEntries(); renderAgg(); renderSettlement();
-}
-
+function addEntry(){entries.push(blankEntry());renderEntries();}
+function deleteEntry(i){entries.splice(i,1);if(!entries.length)entries=[blankEntry()];renderEntries();renderAgg();renderSettlement();}
 async function saveData(){
-  var btn=$('save-btn'); btn.disabled=true;
-  var name=varSheetName();
+  var btn=$('save-btn');btn.disabled=true;
   try{
-    await ensureSheet(name);
+    await ensureSheet(varSheetName());
     var header=[['日','カテゴリ','内訳','金額','対象者','支払方法']];
-    var rows=entries.filter(function(e){ return e.detail||e.amount||e.day; }).map(function(e){
-      return [e.day, e.cat, e.detail, parseFloat(e.amount)||0, e.target, e.payment];
+    var rows=entries.filter(function(e){return e.detail||e.amount||e.day;}).map(function(e){
+      return [e.day,e.cat,e.detail,parseAmount(e.amount),e.target,e.payment];
     });
-    await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID, range:name+'!A1:F500'});
+    await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID,range:varSheetName()+'!A1:F500'});
     await gapi.client.sheets.spreadsheets.values.update({
-      spreadsheetId:SHEET_ID, range:name+'!A1:F'+(rows.length+1),
-      valueInputOption:'RAW', resource:{values:header.concat(rows)}
+      spreadsheetId:SHEET_ID,range:varSheetName()+'!A1:F'+(rows.length+1),
+      valueInputOption:'RAW',resource:{values:header.concat(rows)}
     });
-    showStatus('save-status','✓ 保存しました', true);
-  }catch(e){ showStatus('save-status','保存失敗: '+e.message, false); }
+    showStatus('save-status','✓ 保存しました',true);
+  }catch(e){showStatus('save-status','保存失敗: '+e.message,false);}
   btn.disabled=false;
 }
 
-// ---- 固定費レンダリング ----
+// ---- 固定費 ----
 function renderFixed(){
-  var list = $('fixed-list'); list.innerHTML = '';
-  fixedEntries.forEach(function(e, i){
-    var row = document.createElement('div');
-    row.className = 'fentry-row';
-    var tgtOpts = TARGETS.map(function(t){
-      return '<option value="'+t+'"'+(e.target===t?' selected':'')+'>'+t+'</option>';
-    }).join('');
-    var payOpts = PAYMENTS.map(function(p){
-      return '<option value="'+p+'"'+(e.payment===p?' selected':'')+'>'+p+'</option>';
-    }).join('');
-    row.innerHTML =
+  var list=$('fixed-list');list.innerHTML='';
+  fixedEntries.forEach(function(e,i){
+    var row=document.createElement('div');row.className='fentry-row';
+    var tgtOpts=TARGETS.map(function(t){return '<option value="'+t+'"'+(e.target===t?' selected':'')+'>'+t+'</option>';}).join('');
+    var payOpts=PAY_FIXED.map(function(p){return '<option value="'+p+'"'+(e.payment===p?' selected':'')+'>'+p+'</option>';}).join('');
+    row.innerHTML=
       '<input type="text" value="'+escHtml(e.cat1)+'" readonly style="background:var(--bg2);color:var(--text2)">'+
       '<input type="text" value="'+escHtml(e.cat2)+'" readonly style="background:var(--bg2);color:var(--text2)">'+
       '<select onchange="fixedEntries['+i+'].target=this.value;renderAgg();renderSettlement()">'+tgtOpts+'</select>'+
-      '<select onchange="fixedEntries['+i+'].payment=this.value;renderAgg();renderSettlement()">'+payOpts+'</select>'+
-      '<input type="number" value="'+escHtml(e.amount)+'" placeholder="0" min="0" oninput="fixedEntries['+i+'].amount=this.value;renderAgg();renderSettlement()">'+
-      '<span></span>';
+      '<select onchange="fixedEntries['+i+'].payment=this.value;renderSettlement()">'+payOpts+'</select>'+
+      '<input class="num-input" type="text" value="'+fmtInput(e.amount)+'" placeholder="0" '+
+        'oninput="fixedEntries['+i+'].amount=this.value" '+
+        'onblur="fixedEntries['+i+'].amount=this.value;this.value=fmtInput(this.value);renderAgg();renderSettlement()">';
     list.appendChild(row);
   });
 }
-
 async function saveFixed(){
-  var btn=$('save-fixed-btn'); btn.disabled=true;
-  var name=fixedSheetName();
+  var btn=$('save-fixed-btn');btn.disabled=true;
   try{
-    await ensureSheet(name);
+    await ensureSheet(fixedSheetName());
     var header=[['カテゴリ1','カテゴリ2','対象者','支払方法','金額']];
-    var rows=fixedEntries.map(function(e){
-      return [e.cat1, e.cat2, e.target, e.payment, parseFloat(e.amount)||0];
-    });
-    await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID, range:name+'!A1:E200'});
+    var rows=fixedEntries.map(function(e){return [e.cat1,e.cat2,e.target,e.payment,parseAmount(e.amount)];});
+    await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID,range:fixedSheetName()+'!A1:E200'});
     await gapi.client.sheets.spreadsheets.values.update({
-      spreadsheetId:SHEET_ID, range:name+'!A1:E'+(rows.length+1),
-      valueInputOption:'RAW', resource:{values:header.concat(rows)}
+      spreadsheetId:SHEET_ID,range:fixedSheetName()+'!A1:E'+(rows.length+1),
+      valueInputOption:'RAW',resource:{values:header.concat(rows)}
     });
-    showStatus('save-fixed-status','✓ 保存しました', true);
-  }catch(e){ showStatus('save-fixed-status','保存失敗: '+e.message, false); }
+    showStatus('save-fixed-status','✓ 保存しました',true);
+  }catch(e){showStatus('save-fixed-status','保存失敗: '+e.message,false);}
   btn.disabled=false;
 }
 
-// ---- 集計 ----
+// ---- 集計（カテゴリシート順：固定費→変動費）----
 function renderAgg(){
-  // {cat1: {cat2: {both,satoshi,shizuka}}}
-  var totals = {};
-  var ratio = currentRatio();
+  var ratio=currentRatio();
+  // orderedKeys: [{cat1,cat2}] カテゴリシート順
+  var orderedKeys=[];
+  // 固定費（カテゴリシート順）
+  fixedTemplates.forEach(function(tpl){
+    orderedKeys.push({cat1:tpl.cat1,cat2:tpl.cat2,type:'fixed'});
+  });
+  // 変動費（カテゴリシート順）
+  varCategories.forEach(function(cat){
+    orderedKeys.push({cat1:'変動費',cat2:cat,type:'var'});
+  });
 
-  function addToTotals(cat1, cat2, amount, target){
-    if(!totals[cat1]) totals[cat1] = {};
-    if(!totals[cat1][cat2]) totals[cat1][cat2] = {both:0,satoshi:0,shizuka:0};
-    var d = totals[cat1][cat2];
-    if(target==='ふたり') d.both += amount;
-    else if(target==='さとし') d.satoshi += amount;
-    else if(target==='しずか') d.shizuka += amount;
+  var totals={};
+  function key(c1,c2){return c1+'__'+c2;}
+  function addTo(c1,c2,amount,target){
+    var k=key(c1,c2);
+    if(!totals[k]) totals[k]={cat1:c1,cat2:c2,both:0,satoshi:0,shizuka:0};
+    if(target==='ふたり') totals[k].both+=amount;
+    else if(target==='さとし') totals[k].satoshi+=amount;
+    else if(target==='しずか') totals[k].shizuka+=amount;
   }
-
-  // 変動費
-  entries.forEach(function(e){
-    var a = parseFloat(e.amount)||0;
-    if(!a) return;
-    addToTotals('変動費', e.cat||'', a, e.target);
-  });
-
-  // 固定費
-  fixedEntries.forEach(function(e){
-    var a = parseFloat(e.amount)||0;
-    if(!a) return;
-    addToTotals(e.cat1||'固定費', e.cat2||'', a, e.target);
-  });
+  fixedEntries.forEach(function(e){var a=parseAmount(e.amount);if(a) addTo(e.cat1,e.cat2,a,e.target);});
+  entries.forEach(function(e){var a=parseAmount(e.amount);if(a) addTo('変動費',e.cat||'',a,e.target);});
 
   var tb=0,ts=0,tz=0;
-  var tbody=$('agg-tbody'); tbody.innerHTML='';
-  Object.keys(totals).forEach(function(cat1){
-    Object.keys(totals[cat1]).forEach(function(cat2){
-      var d = totals[cat1][cat2];
-      var total = d.both+d.satoshi+d.shizuka;
-      if(!total) return;
-      tb+=d.both; ts+=d.satoshi; tz+=d.shizuka;
-      var tr=document.createElement('tr');
-      tr.innerHTML='<td>'+escHtml(cat1)+'</td><td>'+escHtml(cat2)+'</td>'+
-        '<td>'+fmt(d.both)+'</td><td>'+fmt(d.satoshi)+'</td><td>'+fmt(d.shizuka)+'</td><td>'+fmt(total)+'</td>';
-      tbody.appendChild(tr);
-    });
+  var tbody=$('agg-tbody');tbody.innerHTML='';
+  orderedKeys.forEach(function(ok){
+    var k=key(ok.cat1,ok.cat2);
+    var d=totals[k];if(!d) return;
+    var total=d.both+d.satoshi+d.shizuka;if(!total) return;
+    tb+=d.both;ts+=d.satoshi;tz+=d.shizuka;
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+
+      '<td>'+fmt(d.both)+'</td><td>'+fmt(d.satoshi)+'</td><td>'+fmt(d.shizuka)+'</td><td>'+fmt(d.both+d.satoshi+d.shizuka)+'</td>';
+    tbody.appendChild(tr);
+  });
+  // カテゴリシートにない項目も念のため追加
+  Object.keys(totals).forEach(function(k){
+    var d=totals[k];
+    var already=orderedKeys.some(function(ok){return key(ok.cat1,ok.cat2)===k;});
+    if(already) return;
+    var total=d.both+d.satoshi+d.shizuka;if(!total) return;
+    tb+=d.both;ts+=d.satoshi;tz+=d.shizuka;
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+
+      '<td>'+fmt(d.both)+'</td><td>'+fmt(d.satoshi)+'</td><td>'+fmt(d.shizuka)+'</td><td>'+fmt(d.both+d.satoshi+d.shizuka)+'</td>';
+    tbody.appendChild(tr);
   });
   var grand=tb+ts+tz;
   $('agg-tfoot').innerHTML='<tr><td colspan="2">合計</td><td>'+fmt(tb)+'</td><td>'+fmt(ts)+'</td><td>'+fmt(tz)+'</td><td>'+fmt(grand)+'</td></tr>';
-  $('m-total').textContent=fmt(grand);
-  $('m-both').textContent=fmt(tb);
-  $('m-satoshi').textContent=fmt(ts);
-  $('m-shizuka').textContent=fmt(tz);
+  $('m-total').textContent=fmt(grand);$('m-both').textContent=fmt(tb);$('m-satoshi').textContent=fmt(ts);$('m-shizuka').textContent=fmt(tz);
 }
 
-// ---- 精算 ----
+// ---- 精算（相殺ロジック込み）----
 function renderSettlement(){
-  var ratio = currentRatio();
-  var amex=0, mits=0, advS=0, advZ=0;
+  var ratio=currentRatio();
+  var amex=0,mits=0,advS=0,advZ=0;
 
-  function calcEntry(payment, target, amount){
-    if(FAMILY_CARDS.indexOf(payment)>=0){
-      if(payment==='Amex') amex+=amount;
-      else mits+=amount;
-    } else if(SATOSHI_PERSONAL.indexOf(payment)>=0){
-      // さとし個人払い→立替の判定
-      if(target==='ふたり') advS += amount*(100-ratio)/100;
-      else if(target==='しずか') advS += amount;
-      // target===さとし は自分負担なので立替なし
-    } else if(SHIZUKA_PERSONAL.indexOf(payment)>=0){
-      if(target==='ふたり') advZ += amount*ratio/100;
-      else if(target==='さとし') advZ += amount;
+  function calcEntry(payment,target,amount){
+    if(!amount) return;
+    if(payment==='Amex') amex+=amount;
+    else if(payment==='三菱地所') mits+=amount;
+    else if(SATOSHI_PAY.indexOf(payment)>=0){
+      if(target==='ふたり') advS+=amount*(100-ratio)/100;
+      else if(target==='しずか') advS+=amount;
+      // さとし個人→自己負担
+    } else if(SHIZUKA_PAY.indexOf(payment)>=0){
+      if(target==='ふたり') advZ+=amount*ratio/100;
+      else if(target==='さとし') advZ+=amount;
+      // しずか個人→自己負担
     }
   }
-
-  entries.forEach(function(e){ calcEntry(e.payment, e.target, parseFloat(e.amount)||0); });
-  fixedEntries.forEach(function(e){ calcEntry(e.payment, e.target, parseFloat(e.amount)||0); });
+  entries.forEach(function(e){calcEntry(e.payment,e.target,parseAmount(e.amount));});
+  fixedEntries.forEach(function(e){calcEntry(e.payment,e.target,parseAmount(e.amount));});
 
   var cardTotal=amex+mits;
+  // 楽天銀行への入金（家族カード按分）
   var depS=Math.round(cardTotal*ratio/100);
   var depZ=Math.round(cardTotal*(100-ratio)/100);
-  var net=advS-advZ;
+  // 立替精算（純粋な立替相殺前）
+  // advS: さとしがしずか/ふたりのために立替えた額（しずかが返すべき額）
+  // advZ: しずかがさとし/ふたりのために立替えた額（さとしが返すべき額）
+  var netAdv=advS-advZ; // >0 → しずかがさとしに払うべき / <0 → さとしがしずかに払うべき
 
-  $('s-amex').textContent=fmt(amex);
-  $('s-mits').textContent=fmt(mits);
-  $('s-card-total').textContent=fmt(cardTotal);
-  $('s-dep-s').textContent=fmt(depS);
-  $('s-dep-z').textContent=fmt(depZ);
-  $('lbl-ratio-s').textContent=ratio;
-  $('lbl-ratio-z').textContent=100-ratio;
-  $('s-adv-s').textContent=fmt(advS);
-  $('s-adv-z').textContent=fmt(advZ);
-  $('s-net').textContent=(net>=0?'+':'')+fmt(net);
+  // ---- 相殺ロジック ----
+  // 変数整理：
+  // depS: さとしが楽天に入金すべき額
+  // depZ: しずかが楽天に入金すべき額
+  // netAdv>0: しずかがさとしに |netAdv| 送金すべき
+  // netAdv<0: さとしがしずかに |netAdv| 送金すべき
 
-  var txt=$('transfer-text');
-  if(Math.abs(net)<1) txt.textContent='立替精算なし（相殺済み）';
-  else if(net>0) txt.innerHTML='<strong>しずか → さとし</strong> へ '+fmt(Math.abs(net))+' を送金';
-  else txt.innerHTML='<strong>さとし → しずか</strong> へ '+fmt(Math.abs(net))+' を送金';
+  var finalSatoshiToRakuten=depS;
+  var finalShizukaToRakuten=depZ;
+  var finalSatoshiToShizuka=0;
+  var finalShizukaToSatoshi=0;
+
+  if(netAdv>0){
+    // しずか→さとし の立替送金あり → さとしの楽天入金をしずかが肩代わりできる
+    var cover=Math.min(netAdv,depS);
+    finalSatoshiToRakuten=Math.round(depS-cover);
+    finalShizukaToRakuten=Math.round(depZ+cover);
+    finalShizukaToSatoshi=Math.round(netAdv-cover);
+  } else if(netAdv<0){
+    // さとし→しずか の立替送金あり → しずかの楽天入金をさとしが肩代わりできる
+    var absNet=Math.abs(netAdv);
+    var cover2=Math.min(absNet,depZ);
+    finalShizukaToRakuten=Math.round(depZ-cover2);
+    finalSatoshiToRakuten=Math.round(depS+cover2);
+    finalSatoshiToShizuka=Math.round(absNet-cover2);
+  }
+
+  // 詳細表示
+  var detail='（家族カード計 '+fmt(cardTotal)+' / さとし負担'+ratio+'% しずか負担'+(100-ratio)+'%）';
+  $('settlement-detail').textContent=detail;
+
+  // 楽天銀行送金ボックス
+  var rrows=$('rakuten-rows');rrows.innerHTML='';
+  if(finalSatoshiToRakuten>0){
+    rrows.innerHTML+='<div class="transfer-row blue"><span>さとし</span><span class="arrow">→</span><span>楽天銀行</span><span class="amount">'+fmt(finalSatoshiToRakuten)+'</span></div>';
+  }
+  if(finalShizukaToRakuten>0){
+    rrows.innerHTML+='<div class="transfer-row blue"><span>しずか</span><span class="arrow">→</span><span>楽天銀行</span><span class="amount">'+fmt(finalShizukaToRakuten)+'</span></div>';
+  }
+  if(finalSatoshiToRakuten===0&&finalShizukaToRakuten===0){
+    rrows.innerHTML='<div class="transfer-row none">楽天銀行への送金なし</div>';
+  }
+
+  // 立替精算ボックス
+  var trows=$('transfer-rows');trows.innerHTML='';
+  if(finalShizukaToSatoshi>0){
+    trows.innerHTML='<div class="transfer-row green"><span>しずか</span><span class="arrow">→</span><span>さとし</span><span class="amount">'+fmt(finalShizukaToSatoshi)+'</span></div>';
+  } else if(finalSatoshiToShizuka>0){
+    trows.innerHTML='<div class="transfer-row green"><span>さとし</span><span class="arrow">→</span><span>しずか</span><span class="amount">'+fmt(finalSatoshiToShizuka)+'</span></div>';
+  } else {
+    trows.innerHTML='<div class="transfer-row none">立替精算なし（相殺済み）</div>';
+  }
 }
 
 // ---- 年間集計 ----
 async function loadYearData(){
   $('year-label').textContent=currentYear+'年';
   $('year-thead').innerHTML='<tr><th>カテゴリ1</th><th>カテゴリ2</th>'+
-    Array.from({length:12},function(_,i){ return '<th>'+(i+1)+'月</th>'; }).join('')+'<th>合計</th></tr>';
+    Array.from({length:12},function(_,i){return '<th>'+(i+1)+'月</th>';}).join('')+'<th>合計</th></tr>';
   $('year-tbody').innerHTML='<tr><td colspan="15" style="text-align:center;color:var(--text3);padding:20px">読み込み中...</td></tr>';
-
-  // {cat1:{cat2:[12]}}
   var yearData={};
+  function addYear(c1,c2,m,a){
+    var k=c1+'__'+c2;
+    if(!yearData[k]) yearData[k]={cat1:c1,cat2:c2,vals:Array(12).fill(0)};
+    yearData[k].vals[m-1]+=a;
+  }
   for(var m=1;m<=12;m++){
-    var vname=currentYear+'年'+m+'月_変動';
-    var fname=currentYear+'年'+m+'月_固定';
     try{
-      var rv=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID, range:vname+'!A2:F500'});
-      (rv.result.values||[]).forEach(function(row){
-        var cat1='変動費', cat2=row[1]||'';
-        var a=parseFloat(row[3])||0;
-        if(!yearData[cat1]) yearData[cat1]={};
-        if(!yearData[cat1][cat2]) yearData[cat1][cat2]=Array(12).fill(0);
-        yearData[cat1][cat2][m-1]+=a;
-      });
+      var rv=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:currentYear+'年'+m+'月_変動!A2:F500'});
+      (rv.result.values||[]).forEach(function(row){addYear('変動費',row[1]||'',m,parseFloat(row[3])||0);});
     }catch(e){}
     try{
-      var rf=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID, range:fname+'!A2:E200'});
-      (rf.result.values||[]).forEach(function(row){
-        var cat1=row[0]||'固定費', cat2=row[1]||'';
-        var a=parseFloat(row[4])||0;
-        if(!yearData[cat1]) yearData[cat1]={};
-        if(!yearData[cat1][cat2]) yearData[cat1][cat2]=Array(12).fill(0);
-        yearData[cat1][cat2][m-1]+=a;
-      });
+      var rf=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:currentYear+'年'+m+'月_固定!A2:E200'});
+      (rf.result.values||[]).forEach(function(row){addYear(row[0]||'固定費',row[1]||'',m,parseFloat(row[4])||0);});
     }catch(e){}
   }
-
-  var tbody=$('year-tbody'); tbody.innerHTML='';
+  // カテゴリシート順
+  var orderedKeys=[];
+  fixedTemplates.forEach(function(tpl){orderedKeys.push(tpl.cat1+'__'+tpl.cat2);});
+  varCategories.forEach(function(cat){orderedKeys.push('変動費__'+cat);});
+  var tbody=$('year-tbody');tbody.innerHTML='';
   var totRow=Array(12).fill(0);
-  Object.keys(yearData).forEach(function(cat1){
-    Object.keys(yearData[cat1]).forEach(function(cat2){
-      var vals=yearData[cat1][cat2];
-      var total=vals.reduce(function(a,b){return a+b;},0);
-      if(!total) return;
-      vals.forEach(function(v,i){ totRow[i]+=v; });
-      var tr=document.createElement('tr');
-      tr.innerHTML='<td>'+escHtml(cat1)+'</td><td>'+escHtml(cat2)+'</td>'+
-        vals.map(function(v){ return '<td>'+(v?fmt(v):'-')+'</td>'; }).join('')+
-        '<td>'+fmt(total)+'</td>';
-      tbody.appendChild(tr);
-    });
+  var rendered={};
+  orderedKeys.forEach(function(k){
+    var d=yearData[k];if(!d) return;
+    var total=d.vals.reduce(function(a,b){return a+b;},0);if(!total) return;
+    d.vals.forEach(function(v,i){totRow[i]+=v;});
+    rendered[k]=true;
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+
+      d.vals.map(function(v){return '<td>'+(v?fmt(v):'-')+'</td>';}).join('')+'<td>'+fmt(total)+'</td>';
+    tbody.appendChild(tr);
+  });
+  Object.keys(yearData).forEach(function(k){
+    if(rendered[k]) return;
+    var d=yearData[k];
+    var total=d.vals.reduce(function(a,b){return a+b;},0);if(!total) return;
+    d.vals.forEach(function(v,i){totRow[i]+=v;});
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+
+      d.vals.map(function(v){return '<td>'+(v?fmt(v):'-')+'</td>';}).join('')+'<td>'+fmt(total)+'</td>';
+    tbody.appendChild(tr);
   });
   var grandTotal=totRow.reduce(function(a,b){return a+b;},0);
-  $('year-tfoot').innerHTML='<tr><td colspan="2">合計</td>'+totRow.map(function(v){ return '<td>'+fmt(v)+'</td>'; }).join('')+'<td>'+fmt(grandTotal)+'</td></tr>';
+  $('year-tfoot').innerHTML='<tr><td colspan="2">合計</td>'+totRow.map(function(v){return '<td>'+fmt(v)+'</td>';}).join('')+'<td>'+fmt(grandTotal)+'</td></tr>';
 }
 
 // ---- ユーティリティ ----
 async function ensureSheet(name){
   var meta=await gapi.client.sheets.spreadsheets.get({spreadsheetId:SHEET_ID});
-  var exists=meta.result.sheets.some(function(s){ return s.properties.title===name; });
+  var exists=meta.result.sheets.some(function(s){return s.properties.title===name;});
   if(!exists){
     await gapi.client.sheets.spreadsheets.batchUpdate({
-      spreadsheetId:SHEET_ID,
-      resource:{requests:[{addSheet:{properties:{title:name}}}]}
+      spreadsheetId:SHEET_ID,resource:{requests:[{addSheet:{properties:{title:name}}}]}
     });
   }
 }
-
 function showStatus(id,msg,ok){
-  var el=$(id);
-  el.textContent=msg;
-  el.className='status '+(ok?'ok':'err');
-  setTimeout(function(){ el.textContent=''; el.className='status'; },3000);
+  var el=$(id);el.textContent=msg;el.className='status '+(ok?'ok':'err');
+  setTimeout(function(){el.textContent='';el.className='status';},3000);
 }
-
 function changeMonth(d){
   currentMonth+=d;
-  if(currentMonth>12){ currentMonth=1; currentYear++; }
-  if(currentMonth<1){ currentMonth=12; currentYear--; }
+  if(currentMonth>12){currentMonth=1;currentYear++;}
+  if(currentMonth<1){currentMonth=12;currentYear--;}
   updateMonthTitle();
   if(accessToken) loadMonthData();
 }
-
-function updateMonthTitle(){
-  $('month-title').textContent=currentYear+'年'+currentMonth+'月';
-}
-
+function updateMonthTitle(){$('month-title').textContent=currentYear+'年'+currentMonth+'月';}
 function switchTab(name,el){
-  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
   el.classList.add('active');
-  ['monthly','yearly','settings'].forEach(function(t){ $('tab-'+t).style.display=t===name?'':'none'; });
+  ['monthly','yearly','settings'].forEach(function(t){$('tab-'+t).style.display=t===name?'':'none';});
   if(name==='yearly') loadYearData();
   if(name==='settings') updateRatioUI();
 }
-
-function escHtml(s){
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-window.onload = loadGAPI;
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+window.onload=loadGAPI;
 </script>
 </body>
 </html>
