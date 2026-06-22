@@ -18,7 +18,7 @@
   --shadow:0 1px 4px rgba(0,0,0,0.07);
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;font-size:14px;color:var(--text);background:var(--bg2);min-height:100vh}
-.app{max-width:1000px;margin:0 auto;padding:16px}
+.app{max-width:1060px;margin:0 auto;padding:16px}
 .header{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-radius:var(--radius);padding:14px 20px;margin-bottom:16px;box-shadow:var(--shadow)}
 .logo{font-size:20px;font-weight:700;color:var(--accent)}
 .logo span{font-size:12px;font-weight:400;color:var(--text3);margin-left:6px}
@@ -35,7 +35,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
 .signin-wrap{text-align:center;padding:60px 20px;background:var(--bg);border-radius:var(--radius);box-shadow:var(--shadow)}
 .signin-wrap h2{font-size:20px;font-weight:600;margin-bottom:8px}
 .signin-wrap p{color:var(--text2);margin-bottom:24px;line-height:1.7}
-.google-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--bg);cursor:pointer;font-size:14px;font-weight:500;font-family:inherit;transition:background .15s}
+.google-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--bg);cursor:pointer;font-size:14px;font-weight:500;font-family:inherit}
 .google-btn:hover{background:var(--bg3)}
 .google-btn svg{width:18px;height:18px;flex-shrink:0}
 .signin-note{margin-top:16px;font-size:12px;color:var(--text3)}
@@ -48,18 +48,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
 .card-title{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;margin-bottom:16px}
 .card-title .icon{width:26px;height:26px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--accent-bg)}
 
-/* 変動費テーブル */
+/* 変動費テーブル - 列: 日/カテゴリ/内訳/金額/対象者/支払方法/ポイント/旅行内訳/削除 */
 .tbl-wrap{width:100%;overflow-x:auto}
-.tbl-head{display:grid;grid-template-columns:44px 130px 1fr 110px 90px 140px 36px;gap:6px;padding:0 4px 8px;border-bottom:1px solid var(--border);min-width:640px}
-.tbl-head span{font-size:11px;font-weight:600;color:var(--text3)}
-.entry-row{display:grid;grid-template-columns:44px 130px 1fr 110px 90px 140px 36px;gap:6px;align-items:center;padding:4px;border-radius:var(--radius-sm);min-width:640px}
+/* travel-col は旅行内訳列のtoggle用クラス */
+.tbl-head{display:grid;gap:6px;padding:0 4px 8px;border-bottom:1px solid var(--border);min-width:700px;align-items:center}
+.entry-row{display:grid;gap:6px;align-items:center;padding:4px;border-radius:var(--radius-sm);min-width:700px}
 .entry-row:hover{background:var(--bg2)}
 
 /* 固定費テーブル */
-.ftbl-head{display:grid;grid-template-columns:110px 1fr 90px 150px 120px;gap:8px;padding:0 4px 8px;border-bottom:1px solid var(--border);min-width:580px}
+.ftbl-head{display:grid;grid-template-columns:110px 1fr 90px 150px 120px;gap:8px;padding:0 4px 8px;border-bottom:1px solid var(--border);min-width:560px}
 .ftbl-head span{font-size:11px;font-weight:600;color:var(--text3)}
 .ftbl-head span:last-child{text-align:right}
-.fentry-row{display:grid;grid-template-columns:110px 1fr 90px 150px 120px;gap:8px;align-items:center;padding:5px 4px;border-radius:var(--radius-sm);min-width:580px}
+.fentry-row{display:grid;grid-template-columns:110px 1fr 90px 150px 120px;gap:8px;align-items:center;padding:5px 4px;border-radius:var(--radius-sm);min-width:560px}
 .fentry-row:hover{background:var(--bg2)}
 
 select,input[type=text]{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;background:var(--bg);color:var(--text);font-family:inherit;width:100%}
@@ -68,8 +68,7 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--accent)}
 .num-input:focus{outline:none;border-color:var(--accent)}
 .day-input{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;text-align:center;background:var(--bg);color:var(--text);font-family:inherit;width:100%}
 .day-input:focus{outline:none;border-color:var(--accent)}
-.readonly-cell{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;background:var(--bg2);color:var(--text2);font-family:inherit;width:100%;display:flex;align-items:center}
-
+.readonly-cell{height:34px;border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 8px;font-size:13px;background:var(--bg2);color:var(--text2);width:100%;display:flex;align-items:center;overflow:hidden;white-space:nowrap}
 .entries-list{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
 .add-row-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px dashed var(--border2);border-radius:var(--radius-sm);background:none;cursor:pointer;font-size:13px;color:var(--text3);font-family:inherit}
 .add-row-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
@@ -78,13 +77,21 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--accent)}
 .status.ok{color:var(--accent)}
 .status.err{color:var(--danger)}
 
-/* メトリクス */
+/* ポイント合計 */
+.point-total-bar{display:flex;align-items:center;gap:10px;background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:12px;font-size:13px}
+.point-total-bar .pt-label{color:#7a6000;font-weight:600}
+.point-total-bar .pt-value{font-size:18px;font-weight:700;color:#7a6000}
+
+/* 旅行内訳toggle btn */
+.travel-toggle-btn{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--bg);cursor:pointer;font-size:11px;color:var(--text2);font-family:inherit;white-space:nowrap}
+.travel-toggle-btn:hover{background:var(--bg3)}
+.th-travel-wrap{display:flex;align-items:center;gap:4px}
+
+/* 集計 */
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
 .metric{background:var(--bg2);border-radius:var(--radius-sm);padding:14px;text-align:center}
 .metric-label{font-size:11px;color:var(--text3);font-weight:600;margin-bottom:6px}
 .metric-value{font-size:20px;font-weight:700}
-
-/* 集計テーブル */
 .agg-table{width:100%;border-collapse:collapse}
 .agg-table th{padding:8px 10px;font-size:11px;font-weight:600;color:var(--text3);text-align:right;border-bottom:1px solid var(--border)}
 .agg-table th:first-child,.agg-table th:nth-child(2){text-align:left}
@@ -93,8 +100,17 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--accent)}
 .agg-table td:first-child{color:var(--text3);font-size:12px}
 .agg-table tbody tr:hover td{background:var(--bg2)}
 .agg-table tfoot td{font-weight:700;border-top:2px solid var(--border2);border-bottom:none;font-size:14px}
+/* 折りたたみ */
+.agg-group-header{cursor:pointer;background:var(--bg3)!important;font-weight:600}
+.agg-group-header td{font-size:13px!important;color:var(--text)!important}
+.agg-group-header:hover td{background:var(--bg2)!important}
+.agg-group-toggle{font-size:10px;margin-right:4px;display:inline-block;transition:transform .2s}
+.agg-sub-row{transition:opacity .15s}
+/* 旅行費小計行 */
+.agg-travel-sub td{font-size:12px;color:var(--text2);background:var(--bg2)}
+.agg-travel-sub td:first-child{padding-left:24px}
 
-/* 精算ボックス */
+/* 精算 */
 .transfer-box{border-radius:var(--radius-sm);padding:16px;margin-bottom:10px}
 .transfer-box.blue{background:var(--info-bg);border:1px solid #bed3f0}
 .transfer-box.green{background:var(--accent-bg);border:1px solid #a8d5b8}
@@ -169,6 +185,7 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--accent)}
         <button class="btn" onclick="changeMonth(1)">▶</button>
       </div>
 
+      <!-- 固定費 -->
       <div class="card">
         <div class="card-title"><span class="icon">📌</span>固定費</div>
         <div class="info-box">カテゴリシートのテンプレートを読み込みます。金額のみ入力してください。</div>
@@ -184,12 +201,15 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--accent)}
         </div>
       </div>
 
+      <!-- 変動費 -->
       <div class="card">
         <div class="card-title"><span class="icon">📝</span>変動費</div>
+        <div class="point-total-bar">
+          <span class="pt-label">今月のポイント合計</span>
+          <span class="pt-value" id="point-total">0 pt</span>
+        </div>
         <div class="tbl-wrap">
-          <div class="tbl-head">
-            <span>日</span><span>カテゴリ</span><span>内訳</span><span style="text-align:right">金額</span><span>対象者</span><span>支払方法</span><span></span>
-          </div>
+          <div class="tbl-head" id="var-tbl-head"></div>
           <div class="entries-list" id="entries-list"></div>
         </div>
         <button class="add-row-btn" onclick="addEntry()">＋ 行を追加</button>
@@ -199,6 +219,7 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--accent)}
         </div>
       </div>
 
+      <!-- 集計 -->
       <div class="card">
         <div class="card-title"><span class="icon">📊</span>項目別集計</div>
         <div class="metrics">
@@ -214,20 +235,22 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--accent)}
         </table>
       </div>
 
+      <!-- 精算 -->
       <div class="card">
         <div class="card-title"><span class="icon">🧮</span>精算</div>
         <div class="settle-detail" id="settle-detail"></div>
-        <div id="rakuten-box" class="transfer-box blue">
+        <div class="transfer-box blue">
           <div class="transfer-label blue">🏦 楽天銀行への送金</div>
           <div id="rakuten-rows"></div>
         </div>
-        <div id="transfer-box" class="transfer-box green">
+        <div class="transfer-box green">
           <div class="transfer-label green">🔄 立替精算（相殺後）</div>
           <div id="transfer-rows"></div>
         </div>
       </div>
     </div>
 
+    <!-- 年間 -->
     <div id="tab-yearly" style="display:none">
       <div class="card">
         <div class="card-title"><span class="icon">📅</span>年間集計 — <span id="year-label"></span></div>
@@ -241,6 +264,7 @@ select:focus,input[type=text]:focus{outline:none;border-color:var(--accent)}
       </div>
     </div>
 
+    <!-- 設定 -->
     <div id="tab-settings" style="display:none">
       <div class="card">
         <div class="card-title"><span class="icon">⚖️</span>負担割合（月別）</div>
@@ -274,19 +298,20 @@ var SCOPES='https://www.googleapis.com/auth/spreadsheets';
 var PAY_FIXED=['Amex','三菱地所','さとしWallet','しずかWallet'];
 var PAY_VAR=['Amex','さとしWallet','しずかWallet'];
 var TARGETS=['ふたり','さとし','しずか'];
+var TRAVEL_CAT='旅行費';
 
 var tokenClient=null,gapiReady=false,gsiReady=false,accessToken=null;
 var currentYear=new Date().getFullYear(),currentMonth=new Date().getMonth()+1;
-var fixedTemplates=[],varCategories=[];
+var fixedTemplates=[],varCategories=[],travelSubs=[];
 var ratioChanges=[];
 var entries=[],fixedEntries=[];
+var travelColVisible=false; // 旅行内訳列の表示状態
 
 var fmt=function(n){return '¥'+Math.round(n).toLocaleString('ja-JP');};
 var $=function(id){return document.getElementById(id);};
 
 function getRatio(year,month){
-  var key=year*100+month;
-  var ratio=45;
+  var key=year*100+month,ratio=45;
   for(var i=0;i<ratioChanges.length;i++){
     var c=ratioChanges[i];
     if(c.fromYear*100+c.fromMonth<=key) ratio=c.ratio;
@@ -295,9 +320,53 @@ function getRatio(year,month){
 }
 function currentRatio(){return getRatio(currentYear,currentMonth);}
 
+// ---- col定義（旅行内訳表示有無で切替）----
+function getVarCols(){
+  // 日/カテゴリ/内訳/金額/対象者/支払方法/ポイント[/旅行内訳]/削除
+  if(travelColVisible){
+    return '44px 120px 1fr 100px 86px 130px 80px 110px 34px';
+  } else {
+    return '44px 120px 1fr 100px 86px 130px 80px 34px';
+  }
+}
+
+function renderVarHeader(){
+  var head=$('var-tbl-head');
+  head.style.gridTemplateColumns=getVarCols();
+  var travelBtn='<button class="travel-toggle-btn" onclick="toggleTravelCol()" title="旅行内訳列の表示切替">'+(travelColVisible?'▶ 閉じる':'◀ 旅行内訳')+'</button>';
+  if(travelColVisible){
+    head.innerHTML=
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">日</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">カテゴリ</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">内訳</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3);text-align:right">金額</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">対象者</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">支払方法</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3);text-align:right">ポイント</span>'+
+      '<div class="th-travel-wrap"><span style="font-size:11px;font-weight:600;color:var(--text3)">旅行内訳</span>'+travelBtn+'</div>'+
+      '<span></span>';
+  } else {
+    head.innerHTML=
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">日</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">カテゴリ</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">内訳</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3);text-align:right">金額</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">対象者</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3)">支払方法</span>'+
+      '<span style="font-size:11px;font-weight:600;color:var(--text3);text-align:right">'+travelBtn+'</span>'+
+      '<span></span>';
+  }
+}
+
+function toggleTravelCol(){
+  travelColVisible=!travelColVisible;
+  renderVarHeader();
+  renderEntries();
+}
+
+// ---- ライブラリ読み込み ----
 function loadGAPI(){
-  var s=document.createElement('script');
-  s.src='https://apis.google.com/js/api.js';
+  var s=document.createElement('script');s.src='https://apis.google.com/js/api.js';
   s.onload=function(){
     gapi.load('client',function(){
       gapi.client.init({discoveryDocs:['https://sheets.googleapis.com/$discovery/rest?version=v4']}).then(function(){
@@ -308,8 +377,7 @@ function loadGAPI(){
   document.head.appendChild(s);
 }
 function loadGSI(){
-  var s=document.createElement('script');
-  s.src='https://accounts.google.com/gsi/client';
+  var s=document.createElement('script');s.src='https://accounts.google.com/gsi/client';
   s.onload=function(){
     gsiReady=true;
     tokenClient=google.accounts.oauth2.initTokenClient({
@@ -326,11 +394,10 @@ function loadGSI(){
 }
 function handleAuth(){
   if(accessToken){
-    accessToken=null;
-    $('signin-view').style.display='';$('main-view').style.display='none';
+    accessToken=null;$('signin-view').style.display='';$('main-view').style.display='none';
     $('auth-btn').textContent='Googleでサインイン';$('user-badge').style.display='none';return;
   }
-  if(!gapiReady||!gsiReady||!tokenClient){alert('まだ読み込み中です。数秒後にもう一度お試しください。');return;}
+  if(!gapiReady||!gsiReady||!tokenClient){alert('まだ読み込み中です。数秒後にお試しください。');return;}
   tokenClient.requestAccessToken({prompt:'consent'});
 }
 async function onSignedIn(){
@@ -344,43 +411,46 @@ async function onSignedIn(){
   updateRatioUI();
 }
 
+// ---- カテゴリシート読み込み（B4:I以降）----
 async function loadCategorySheet(){
   try{
-    var r=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:'カテゴリ!B4:G200'});
+    var r=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:'カテゴリ!B4:I200'});
     var rows=r.result.values||[];
-    fixedTemplates=[];varCategories=[];
+    fixedTemplates=[];varCategories=[];travelSubs=[];
     rows.forEach(function(row){
+      // B=cat1, C=cat2, D=対象者, E=支払方法(固定費)
       if(row[0]||row[1]){
         fixedTemplates.push({cat1:row[0]||'',cat2:row[1]||'',target:row[2]||'ふたり',payment:row[3]||'Amex'});
       }
+      // G=変動費カテゴリ (index5 from B)
       if(row[5]) varCategories.push(row[5]);
+      // I=旅行内訳 (index7 from B)
+      if(row[7]) travelSubs.push(row[7]);
     });
   }catch(e){
     fixedTemplates=[];
-    varCategories=['食費','日用品','医療費','交通費','外食','娯楽','衣服','水道光熱費','通信費','その他'];
+    varCategories=['食費','日用品','医療費','交通費','外食','娯楽','衣服','水道光熱費','通信費','旅行費','その他'];
+    travelSubs=[];
   }
 }
 
+// ---- 負担割合 ----
 async function loadRatioChanges(){
   try{
     var r=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:'設定!A1:C200'});
-    var rows=r.result.values||[];
     ratioChanges=[];
-    rows.forEach(function(row){
+    (r.result.values||[]).forEach(function(row){
       var y=parseInt(row[0]),m=parseInt(row[1]),rt=parseInt(row[2]);
       if(y&&m&&!isNaN(rt)) ratioChanges.push({fromYear:y,fromMonth:m,ratio:rt});
     });
     ratioChanges.sort(function(a,b){return (a.fromYear*100+a.fromMonth)-(b.fromYear*100+b.fromMonth);});
   }catch(e){ratioChanges=[];}
 }
-
 async function saveRatio(){
   var v=Math.min(100,Math.max(0,parseInt($('r-satoshi').value)||0));
   var found=false;
   for(var i=0;i<ratioChanges.length;i++){
-    if(ratioChanges[i].fromYear===currentYear&&ratioChanges[i].fromMonth===currentMonth){
-      ratioChanges[i].ratio=v;found=true;break;
-    }
+    if(ratioChanges[i].fromYear===currentYear&&ratioChanges[i].fromMonth===currentMonth){ratioChanges[i].ratio=v;found=true;break;}
   }
   if(!found) ratioChanges.push({fromYear:currentYear,fromMonth:currentMonth,ratio:v});
   ratioChanges.sort(function(a,b){return (a.fromYear*100+a.fromMonth)-(b.fromYear*100+b.fromMonth);});
@@ -388,32 +458,20 @@ async function saveRatio(){
   try{
     await ensureSheet('設定');
     await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID,range:'設定!A1:C200'});
-    if(values.length){
-      await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId:SHEET_ID,range:'設定!A1:C'+values.length,
-        valueInputOption:'RAW',resource:{values:values}
-      });
-    }
+    if(values.length) await gapi.client.sheets.spreadsheets.values.update({spreadsheetId:SHEET_ID,range:'設定!A1:C'+values.length,valueInputOption:'RAW',resource:{values:values}});
     showStatus('ratio-status','✓ 保存しました（この月以降に反映）',true);
     updateRatioUI();renderSettlement();
   }catch(e){showStatus('ratio-status','保存失敗: '+e.message,false);}
 }
-function syncRatio(){
-  var v=Math.min(100,Math.max(0,parseInt($('r-satoshi').value)||0));
-  $('r-shizuka').value=100-v;renderSettlement();
-}
-function updateRatioUI(){
-  var r=currentRatio();
-  $('r-satoshi').value=r;$('r-shizuka').value=100-r;
-  $('ratio-month-label').textContent=currentYear+'年'+currentMonth+'月';
-}
+function syncRatio(){var v=Math.min(100,Math.max(0,parseInt($('r-satoshi').value)||0));$('r-shizuka').value=100-v;renderSettlement();}
+function updateRatioUI(){var r=currentRatio();$('r-satoshi').value=r;$('r-shizuka').value=100-r;$('ratio-month-label').textContent=currentYear+'年'+currentMonth+'月';}
 
+// ---- 月次データ ----
 async function loadMonthData(){
   try{
-    var r=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:varSheetName()+'!A2:F500'});
-    var rows=r.result.values||[];
-    entries=rows.map(function(r){
-      return {day:r[0]||'',cat:r[1]||'',detail:r[2]||'',amount:r[3]||'',target:r[4]||TARGETS[0],payment:r[5]||PAY_VAR[0]};
+    var r=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:varSheetName()+'!A2:H500'});
+    entries=(r.result.values||[]).map(function(r){
+      return {day:r[0]||'',cat:r[1]||'',detail:r[2]||'',amount:r[3]||'',target:r[4]||TARGETS[0],payment:r[5]||PAY_VAR[0],point:r[6]||'',travelSub:r[7]||''};
     });
   }catch(e){entries=[];}
   if(!entries.length) entries=[blankEntry()];
@@ -422,50 +480,60 @@ async function loadMonthData(){
     var frows=fr.result.values||[];
     fixedEntries=fixedTemplates.map(function(tpl,i){
       var saved=frows[i];
-      return {
-        cat1:tpl.cat1,cat2:tpl.cat2,
-        target:saved?(saved[2]||tpl.target):tpl.target,
-        payment:saved?(saved[3]||tpl.payment):tpl.payment,
-        amount:saved?(saved[4]||''):''
-      };
+      return {cat1:tpl.cat1,cat2:tpl.cat2,target:saved?(saved[2]||tpl.target):tpl.target,payment:saved?(saved[3]||tpl.payment):tpl.payment,amount:saved?(saved[4]||''):''};
     });
   }catch(e){
-    fixedEntries=fixedTemplates.map(function(tpl){
-      return {cat1:tpl.cat1,cat2:tpl.cat2,target:tpl.target,payment:tpl.payment,amount:''};
-    });
+    fixedEntries=fixedTemplates.map(function(tpl){return {cat1:tpl.cat1,cat2:tpl.cat2,target:tpl.target,payment:tpl.payment,amount:''};});
   }
-  renderEntries();renderFixed();renderAgg();renderSettlement();updateRatioUI();
+  renderVarHeader();renderEntries();renderFixed();renderAgg();renderSettlement();updateRatioUI();
 }
 function varSheetName(){return currentYear+'年'+currentMonth+'月_変動';}
 function fixedSheetName(){return currentYear+'年'+currentMonth+'月_固定';}
-function blankEntry(){return {day:'',cat:varCategories[0]||'',detail:'',amount:'',target:TARGETS[0],payment:PAY_VAR[0]};}
+function blankEntry(){return {day:'',cat:varCategories[0]||'',detail:'',amount:'',target:TARGETS[0],payment:PAY_VAR[0],point:'',travelSub:''};}
 
-function fmtInput(val){
-  var n=parseFloat(String(val).replace(/,/g,''));
-  if(isNaN(n)||n===0) return '';
-  return Math.round(n).toLocaleString('ja-JP');
-}
+function fmtInput(val){var n=parseFloat(String(val).replace(/,/g,''));return (isNaN(n)||n===0)?'':Math.round(n).toLocaleString('ja-JP');}
 function parseAmount(val){return parseFloat(String(val).replace(/,/g,''))||0;}
 
+// ---- 変動費レンダリング ----
 function renderEntries(){
   var list=$('entries-list');list.innerHTML='';
+  var ptTotal=0;
   entries.forEach(function(e,i){
-    var row=document.createElement('div');row.className='entry-row';
+    ptTotal+=parseInt(String(e.point).replace(/,/g,''))||0;
+    var row=document.createElement('div');
+    row.className='entry-row';
+    row.style.gridTemplateColumns=getVarCols();
     var catOpts=varCategories.map(function(c){return '<option value="'+escHtml(c)+'"'+(e.cat===c?' selected':'')+'>'+escHtml(c)+'</option>';}).join('');
     var tgtOpts=TARGETS.map(function(t){return '<option value="'+t+'"'+(e.target===t?' selected':'')+'>'+t+'</option>';}).join('');
     var payOpts=PAY_VAR.map(function(p){return '<option value="'+p+'"'+(e.payment===p?' selected':'')+'>'+p+'</option>';}).join('');
+    // 旅行内訳セル（カテゴリが旅行費の場合のみ有効）
+    var isTravel=(e.cat===TRAVEL_CAT);
+    var travelCell='';
+    if(travelColVisible){
+      if(isTravel){
+        var subOpts='<option value=""></option>'+travelSubs.map(function(s){return '<option value="'+escHtml(s)+'"'+(e.travelSub===s?' selected':'')+'>'+escHtml(s)+'</option>';}).join('');
+        travelCell='<select onchange="entries['+i+'].travelSub=this.value;renderAgg()">'+subOpts+'</select>';
+      } else {
+        travelCell='<div style="height:34px"></div>';
+      }
+    }
     row.innerHTML=
       '<input class="day-input" type="text" value="'+escHtml(e.day)+'" placeholder="日" maxlength="2" oninput="entries['+i+'].day=this.value">'+
-      '<select onchange="entries['+i+'].cat=this.value;renderAgg()">'+catOpts+'</select>'+
+      '<select onchange="entries['+i+'].cat=this.value;if(this.value!==\''+TRAVEL_CAT+'\'){entries['+i+'].travelSub=\'\';}renderAgg();renderEntries()">'+catOpts+'</select>'+
       '<input type="text" value="'+escHtml(e.detail)+'" placeholder="内訳" oninput="entries['+i+'].detail=this.value">'+
-      '<input class="num-input" type="text" value="'+fmtInput(e.amount)+'" placeholder="0" '+
-        'oninput="entries['+i+'].amount=this.value" '+
-        'onblur="entries['+i+'].amount=this.value;this.value=fmtInput(this.value);renderAgg();renderSettlement()">'+
+      '<input class="num-input" type="text" value="'+fmtInput(e.amount)+'" placeholder="0" oninput="entries['+i+'].amount=this.value" onblur="entries['+i+'].amount=this.value;this.value=fmtInput(this.value);renderAgg();renderSettlement()">'+
       '<select onchange="entries['+i+'].target=this.value;renderAgg();renderSettlement()">'+tgtOpts+'</select>'+
-      '<select onchange="entries['+i+'].payment=this.value;renderAgg();renderSettlement()">'+payOpts+'</select>'+
+      '<select onchange="entries['+i+'].payment=this.value;renderSettlement()">'+payOpts+'</select>'+
+      '<input class="num-input" type="text" value="'+escHtml(e.point)+'" placeholder="0" oninput="entries['+i+'].point=this.value" onblur="this.value=this.value;updatePointTotal()">'+
+      (travelColVisible?travelCell:'')+
       '<button class="btn btn-ghost btn-sm" onclick="deleteEntry('+i+')" title="削除">✕</button>';
     list.appendChild(row);
   });
+  $('point-total').textContent=ptTotal.toLocaleString('ja-JP')+' pt';
+}
+function updatePointTotal(){
+  var pt=0;entries.forEach(function(e){pt+=parseInt(String(e.point).replace(/,/g,''))||0;});
+  $('point-total').textContent=pt.toLocaleString('ja-JP')+' pt';
 }
 function addEntry(){entries.push(blankEntry());renderEntries();}
 function deleteEntry(i){entries.splice(i,1);if(!entries.length)entries=[blankEntry()];renderEntries();renderAgg();renderSettlement();}
@@ -473,20 +541,18 @@ async function saveData(){
   var btn=$('save-btn');btn.disabled=true;
   try{
     await ensureSheet(varSheetName());
-    var header=[['日','カテゴリ','内訳','金額','対象者','支払方法']];
+    var header=[['日','カテゴリ','内訳','金額','対象者','支払方法','ポイント','旅行内訳']];
     var rows=entries.filter(function(e){return e.detail||e.amount||e.day;}).map(function(e){
-      return [e.day,e.cat,e.detail,parseAmount(e.amount),e.target,e.payment];
+      return [e.day,e.cat,e.detail,parseAmount(e.amount),e.target,e.payment,parseInt(e.point)||0,e.travelSub||''];
     });
-    await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID,range:varSheetName()+'!A1:F500'});
-    await gapi.client.sheets.spreadsheets.values.update({
-      spreadsheetId:SHEET_ID,range:varSheetName()+'!A1:F'+(rows.length+1),
-      valueInputOption:'RAW',resource:{values:header.concat(rows)}
-    });
+    await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID,range:varSheetName()+'!A1:H500'});
+    await gapi.client.sheets.spreadsheets.values.update({spreadsheetId:SHEET_ID,range:varSheetName()+'!A1:H'+(rows.length+1),valueInputOption:'RAW',resource:{values:header.concat(rows)}});
     showStatus('save-status','✓ 保存しました',true);
   }catch(e){showStatus('save-status','保存失敗: '+e.message,false);}
   btn.disabled=false;
 }
 
+// ---- 固定費レンダリング ----
 function renderFixed(){
   var list=$('fixed-list');list.innerHTML='';
   fixedEntries.forEach(function(e,i){
@@ -498,9 +564,7 @@ function renderFixed(){
       '<div class="readonly-cell">'+escHtml(e.cat2)+'</div>'+
       '<select onchange="fixedEntries['+i+'].target=this.value;renderAgg();renderSettlement()">'+tgtOpts+'</select>'+
       '<select onchange="fixedEntries['+i+'].payment=this.value;renderAgg();renderSettlement()">'+payOpts+'</select>'+
-      '<input class="num-input" type="text" value="'+fmtInput(e.amount)+'" placeholder="0" '+
-        'oninput="fixedEntries['+i+'].amount=this.value" '+
-        'onblur="fixedEntries['+i+'].amount=this.value;this.value=fmtInput(this.value);renderAgg();renderSettlement()">';
+      '<input class="num-input" type="text" value="'+fmtInput(e.amount)+'" placeholder="0" oninput="fixedEntries['+i+'].amount=this.value" onblur="fixedEntries['+i+'].amount=this.value;this.value=fmtInput(this.value);renderAgg();renderSettlement()">';
     list.appendChild(row);
   });
 }
@@ -511,231 +575,199 @@ async function saveFixed(){
     var header=[['カテゴリ1','カテゴリ2','対象者','支払方法','金額']];
     var rows=fixedEntries.map(function(e){return [e.cat1,e.cat2,e.target,e.payment,parseAmount(e.amount)];});
     await gapi.client.sheets.spreadsheets.values.clear({spreadsheetId:SHEET_ID,range:fixedSheetName()+'!A1:E200'});
-    await gapi.client.sheets.spreadsheets.values.update({
-      spreadsheetId:SHEET_ID,range:fixedSheetName()+'!A1:E'+(rows.length+1),
-      valueInputOption:'RAW',resource:{values:header.concat(rows)}
-    });
+    await gapi.client.sheets.spreadsheets.values.update({spreadsheetId:SHEET_ID,range:fixedSheetName()+'!A1:E'+(rows.length+1),valueInputOption:'RAW',resource:{values:header.concat(rows)}});
     showStatus('save-fixed-status','✓ 保存しました',true);
   }catch(e){showStatus('save-fixed-status','保存失敗: '+e.message,false);}
   btn.disabled=false;
 }
 
+// ---- 集計 ----
+// 固定費はcat1+cat2でキー（重複行を合算）
+// 変動費は'変動費'+cat
 function renderAgg(){
-  var orderedKeys=[];
-  fixedTemplates.forEach(function(tpl){orderedKeys.push(tpl.cat1+'__'+tpl.cat2);});
-  varCategories.forEach(function(cat){orderedKeys.push('変動費__'+cat);});
-  var totals={};
-  function addTo(c1,c2,amount,target){
-    var k=c1+'__'+c2;
-    if(!totals[k]) totals[k]={cat1:c1,cat2:c2,both:0,satoshi:0,shizuka:0};
-    if(target==='ふたり') totals[k].both+=amount;
-    else if(target==='さとし') totals[k].satoshi+=amount;
-    else if(target==='しずか') totals[k].shizuka+=amount;
-  }
-  fixedEntries.forEach(function(e){var a=parseAmount(e.amount);if(a) addTo(e.cat1,e.cat2,a,e.target);});
-  entries.forEach(function(e){var a=parseAmount(e.amount);if(a) addTo('変動費',e.cat||'',a,e.target);});
+  // --- 固定費集計（cat1+cat2単位で重複合算）---
+  var fixedTotals={};// key: cat1__cat2 → {cat1,cat2,both,satoshi,shizuka}
+  fixedEntries.forEach(function(e){
+    var a=parseAmount(e.amount);if(!a) return;
+    var k=e.cat1+'__'+e.cat2;
+    if(!fixedTotals[k]) fixedTotals[k]={cat1:e.cat1,cat2:e.cat2,both:0,satoshi:0,shizuka:0};
+    if(e.target==='ふたり') fixedTotals[k].both+=a;
+    else if(e.target==='さとし') fixedTotals[k].satoshi+=a;
+    else if(e.target==='しずか') fixedTotals[k].shizuka+=a;
+  });
+
+  // --- 変動費集計 ---
+  var varTotals={};// key: cat → {cat,both,satoshi,shizuka}
+  // 旅行費内訳集計
+  var travelSubTotals={};// key: subName → amount
+  entries.forEach(function(e){
+    var a=parseAmount(e.amount);if(!a) return;
+    var cat=e.cat||'';
+    if(!varTotals[cat]) varTotals[cat]={cat:cat,both:0,satoshi:0,shizuka:0};
+    if(e.target==='ふたり') varTotals[cat].both+=a;
+    else if(e.target==='さとし') varTotals[cat].satoshi+=a;
+    else if(e.target==='しずか') varTotals[cat].shizuka+=a;
+    // 旅行費内訳
+    if(cat===TRAVEL_CAT&&e.travelSub){
+      travelSubTotals[e.travelSub]=(travelSubTotals[e.travelSub]||0)+a;
+    }
+  });
+
   var tb=0,ts=0,tz=0;
   var tbody=$('agg-tbody');tbody.innerHTML='';
-  var rendered={};
-  orderedKeys.forEach(function(k){
-    var d=totals[k];if(!d) return;
-    var total=d.both+d.satoshi+d.shizuka;if(!total) return;
-    tb+=d.both;ts+=d.satoshi;tz+=d.shizuka;rendered[k]=true;
-    var tr=document.createElement('tr');
-    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+
-      '<td>'+fmt(d.both)+'</td><td>'+fmt(d.satoshi)+'</td><td>'+fmt(d.shizuka)+'</td><td>'+fmt(d.both+d.satoshi+d.shizuka)+'</td>';
-    tbody.appendChild(tr);
+
+  // カテゴリシート順で固定費を表示（cat1単位で折りたたみ）
+  // まず固定費のcat1グループを構築
+  var fixedCat1Groups={};// cat1 → [{key,data}]
+  var fixedCat1Order=[];
+  fixedTemplates.forEach(function(tpl){
+    var k=tpl.cat1+'__'+tpl.cat2;
+    if(!fixedCat1Groups[tpl.cat1]){fixedCat1Groups[tpl.cat1]=[];fixedCat1Order.push(tpl.cat1);}
+    // 重複追加防止
+    var already=fixedCat1Groups[tpl.cat1].some(function(x){return x.key===k;});
+    if(!already) fixedCat1Groups[tpl.cat1].push({key:k,cat2:tpl.cat2});
   });
-  Object.keys(totals).forEach(function(k){
-    if(rendered[k]) return;
-    var d=totals[k];var total=d.both+d.satoshi+d.shizuka;if(!total) return;
+
+  // 折りたたみ状態管理
+  if(!window.aggCollapsed) window.aggCollapsed={};
+
+  fixedCat1Order.forEach(function(cat1){
+    var group=fixedCat1Groups[cat1];
+    // cat1グループ合計
+    var gBoth=0,gSatoshi=0,gShizuka=0;
+    group.forEach(function(item){
+      var d=fixedTotals[item.key];if(!d) return;
+      gBoth+=d.both;gSatoshi+=d.satoshi;gShizuka+=d.shizuka;
+    });
+    var gTotal=gBoth+gSatoshi+gShizuka;
+    var collapsed=window.aggCollapsed[cat1]!==false;// デフォルト折りたたみ無し
+    if(window.aggCollapsed[cat1]===undefined) collapsed=false;
+
+    // グループヘッダー行
+    var htr=document.createElement('tr');
+    htr.className='agg-group-header';
+    htr.setAttribute('data-cat1',cat1);
+    htr.onclick=function(){toggleAggGroup(cat1);};
+    var arrow=collapsed?'▶':'▼';
+    htr.innerHTML='<td><span class="agg-group-toggle" id="agg-toggle-'+escHtml(cat1)+'">'+arrow+'</span>'+escHtml(cat1)+'</td>'+
+      '<td style="color:var(--text3);font-size:12px">'+(collapsed?'（折りたたみ中）':'')+'</td>'+
+      '<td>'+fmt(gBoth)+'</td><td>'+fmt(gSatoshi)+'</td><td>'+fmt(gShizuka)+'</td><td>'+fmt(gTotal)+'</td>';
+    tbody.appendChild(htr);
+    tb+=gBoth;ts+=gSatoshi;tz+=gShizuka;
+
+    // サブ行
+    group.forEach(function(item){
+      var d=fixedTotals[item.key];
+      if(!d) return;
+      var total=d.both+d.satoshi+d.shizuka;if(!total) return;
+      var tr=document.createElement('tr');
+      tr.className='agg-sub-row';
+      tr.setAttribute('data-group',cat1);
+      tr.style.display=collapsed?'none':'';
+      tr.innerHTML='<td></td><td>'+escHtml(d.cat2)+'</td>'+
+        '<td>'+fmt(d.both)+'</td><td>'+fmt(d.satoshi)+'</td><td>'+fmt(d.shizuka)+'</td><td>'+fmt(total)+'</td>';
+      tbody.appendChild(tr);
+    });
+  });
+
+  // 変動費（カテゴリシート順）
+  varCategories.forEach(function(cat){
+    var d=varTotals[cat];if(!d) return;
+    var total=d.both+d.satoshi+d.shizuka;if(!total) return;
     tb+=d.both;ts+=d.satoshi;tz+=d.shizuka;
     var tr=document.createElement('tr');
-    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+
-      '<td>'+fmt(d.both)+'</td><td>'+fmt(d.satoshi)+'</td><td>'+fmt(d.shizuka)+'</td><td>'+fmt(d.both+d.satoshi+d.shizuka)+'</td>';
+    tr.innerHTML='<td>変動費</td><td>'+escHtml(d.cat)+'</td>'+
+      '<td>'+fmt(d.both)+'</td><td>'+fmt(d.satoshi)+'</td><td>'+fmt(d.shizuka)+'</td><td>'+fmt(total)+'</td>';
     tbody.appendChild(tr);
+    // 旅行費の場合、内訳小計を追加
+    if(cat===TRAVEL_CAT&&Object.keys(travelSubTotals).length>0){
+      Object.keys(travelSubTotals).forEach(function(sub){
+        var subAmt=travelSubTotals[sub];if(!subAmt) return;
+        var str=document.createElement('tr');
+        str.className='agg-travel-sub';
+        str.innerHTML='<td>└</td><td>'+escHtml(sub)+'</td><td colspan="3"></td><td>'+fmt(subAmt)+'</td>';
+        tbody.appendChild(str);
+      });
+    }
   });
+
   var grand=tb+ts+tz;
   $('agg-tfoot').innerHTML='<tr><td colspan="2">合計</td><td>'+fmt(tb)+'</td><td>'+fmt(ts)+'</td><td>'+fmt(tz)+'</td><td>'+fmt(grand)+'</td></tr>';
   $('m-total').textContent=fmt(grand);$('m-both').textContent=fmt(tb);$('m-satoshi').textContent=fmt(ts);$('m-shizuka').textContent=fmt(tz);
 }
 
-// ---- 精算ロジック（パターンマッピング対応）----
-// パターン表:
-//   対象\支払  Amex  三菱  さとしW  しずかW
-//   ふたり      1     1      2        2
-//   さとし      3     3      4        5
-//   しずか      3     3      5        4
-//
-// パターン定義:
-//   1: 按分→各自が楽天へ送金
-//   2: 按分→立替者へ送金（立替精算）
-//   3: 全額本人負担→全額楽天へ送金
-//   4: 全額本人負担→精算不要（自分のWalletで自分の支出）
-//   5: 全額本人負担→立替者へ送金
-
-function getPattern(payment,target){
-  var isCard=(payment==='Amex'||payment==='三菱地所');
-  var isSatoshiW=(payment==='さとしWallet');
-  var isShizukaW=(payment==='しずかWallet');
-  if(target==='ふたり'){
-    if(isCard) return 1;
-    if(isSatoshiW||isShizukaW) return 2;
-  } else if(target==='さとし'){
-    if(isCard) return 3;
-    if(isSatoshiW) return 4;
-    if(isShizukaW) return 5;
-  } else if(target==='しずか'){
-    if(isCard) return 3;
-    if(isShizukaW) return 4;
-    if(isSatoshiW) return 5;
-  }
-  return 1;
+function toggleAggGroup(cat1){
+  if(!window.aggCollapsed) window.aggCollapsed={};
+  window.aggCollapsed[cat1]=!window.aggCollapsed[cat1];
+  renderAgg();
 }
 
+// ---- 精算 ----
+function getPattern(payment,target){
+  var isCard=(payment==='Amex'||payment==='三菱地所');
+  var isSW=(payment==='さとしWallet');
+  var isZW=(payment==='しずかWallet');
+  if(target==='ふたり'){if(isCard) return 1;if(isSW||isZW) return 2;}
+  else if(target==='さとし'){if(isCard) return 3;if(isSW) return 4;if(isZW) return 5;}
+  else if(target==='しずか'){if(isCard) return 3;if(isZW) return 4;if(isSW) return 5;}
+  return 1;
+}
 function renderSettlement(){
-  var ratio=currentRatio();
-  var ratioS=ratio/100;
-  var ratioZ=(100-ratio)/100;
-
-  // 楽天銀行へのraw入金義務
-  var rakutenS=0; // さとしが楽天に入金すべき金額
-  var rakutenZ=0; // しずかが楽天に入金すべき金額
-  // 立替精算raw（相殺前）
-  // advStoZ: さとしがしずかに払うべき（しずかが立替えたさとし/ふたり分）
-  // advZtoS: しずかがさとしに払うべき（さとしが立替えたしずか/ふたり分）
-  var advStoZ=0;
-  var advZtoS=0;
-
+  var ratio=currentRatio(),ratioS=ratio/100,ratioZ=(100-ratio)/100;
+  var rakutenS=0,rakutenZ=0,advStoZ=0,advZtoS=0;
   function calc(payment,target,amount){
     if(!amount) return;
     var pat=getPattern(payment,target);
-    var isSatoshiW=(payment==='さとしWallet');
-    var isShizukaW=(payment==='しずかWallet');
-    var isAmex=(payment==='Amex');
-    var isMits=(payment==='三菱地所');
-
-    if(pat===1){
-      // ふたり×家族カード: 按分→各自が楽天へ
-      rakutenS+=amount*ratioS;
-      rakutenZ+=amount*ratioZ;
-    } else if(pat===2){
-      // ふたり×Wallet: 按分→立替精算
-      if(isSatoshiW){
-        // さとしが立替→しずかがさとしに (amount*ratioZ) 払う
-        advZtoS+=amount*ratioZ;
-      } else if(isShizukaW){
-        // しずかが立替→さとしがしずかに (amount*ratioS) 払う
-        advStoZ+=amount*ratioS;
-      }
-    } else if(pat===3){
-      // 個人×家族カード: 全額本人が楽天へ
-      if(target==='さとし') rakutenS+=amount;
-      else if(target==='しずか') rakutenZ+=amount;
-    } else if(pat===4){
-      // 個人×自分Wallet: 精算不要
-      // 何もしない
-    } else if(pat===5){
-      // 個人×相手Wallet: 相手が立替→本人が立替者へ
-      if(isSatoshiW&&target==='しずか'){
-        // さとしがしずかの分を立替→しずかがさとしに返す
-        advZtoS+=amount;
-      } else if(isShizukaW&&target==='さとし'){
-        // しずかがさとしの分を立替→さとしがしずかに返す
-        advStoZ+=amount;
-      }
+    if(pat===1){rakutenS+=amount*ratioS;rakutenZ+=amount*ratioZ;}
+    else if(pat===2){
+      if(payment==='さとしWallet') advZtoS+=amount*ratioZ;
+      else advStoZ+=amount*ratioS;
     }
+    else if(pat===3){if(target==='さとし') rakutenS+=amount;else if(target==='しずか') rakutenZ+=amount;}
+    else if(pat===4){}
+    else if(pat===5){if(payment==='さとしWallet'&&target==='しずか') advZtoS+=amount;else if(payment==='しずかWallet'&&target==='さとし') advStoZ+=amount;}
   }
-
   entries.forEach(function(e){calc(e.payment,e.target,parseAmount(e.amount));});
   fixedEntries.forEach(function(e){calc(e.payment,e.target,parseAmount(e.amount));});
-
-  rakutenS=Math.round(rakutenS);
-  rakutenZ=Math.round(rakutenZ);
-  advStoZ=Math.round(advStoZ);
-  advZtoS=Math.round(advZtoS);
-
-  // 立替の純額
-  // net > 0 → しずかがさとしに払うべき
-  // net < 0 → さとしがしずかに払うべき
+  rakutenS=Math.round(rakutenS);rakutenZ=Math.round(rakutenZ);
+  advStoZ=Math.round(advStoZ);advZtoS=Math.round(advZtoS);
   var netAdv=advZtoS-advStoZ;
-
-  // ---- 相殺ロジック ----
-  // さとし→楽天 と しずか→さとし の相殺（さとしへの入金をしずかが肩代わり）
-  // しずか→楽天 と さとし→しずか の相殺（しずかへの入金をさとしが肩代わり）
-  var finalStoR=rakutenS;  // さとし→楽天
-  var finalZtoR=rakutenZ;  // しずか→楽天
-  var finalZtoS=0;         // しずか→さとし（立替残）
-  var finalStoZ=0;         // さとし→しずか（立替残）
-
-  if(netAdv>0){
-    // しずかがさとしに netAdv 払うべき
-    // → さとしの楽天入金をしずかが肩代わりできる
-    var cover=Math.min(netAdv,rakutenS);
-    finalStoR=Math.round(rakutenS-cover);
-    finalZtoR=Math.round(rakutenZ+cover);
-    finalZtoS=Math.round(netAdv-cover);
-  } else if(netAdv<0){
-    // さとしがしずかに |netAdv| 払うべき
-    // → しずかの楽天入金をさとしが肩代わりできる
-    var absNet=Math.abs(netAdv);
-    var cover2=Math.min(absNet,rakutenZ);
-    finalZtoR=Math.round(rakutenZ-cover2);
-    finalStoR=Math.round(rakutenS+cover2);
-    finalStoZ=Math.round(absNet-cover2);
-  }
-
-  // 詳細テキスト
-  var detail='負担割合 さとし'+ratio+'% / しずか'+(100-ratio)+'%　';
-  detail+='（楽天入金 raw: さとし'+fmt(rakutenS)+' しずか'+fmt(rakutenZ)+'）';
-  $('settle-detail').textContent=detail;
-
-  // 楽天銀行ボックス
+  var fStoR=rakutenS,fZtoR=rakutenZ,fZtoS=0,fStoZ=0;
+  if(netAdv>0){var cv=Math.min(netAdv,rakutenS);fStoR=Math.round(rakutenS-cv);fZtoR=Math.round(rakutenZ+cv);fZtoS=Math.round(netAdv-cv);}
+  else if(netAdv<0){var an=Math.abs(netAdv),cv2=Math.min(an,rakutenZ);fZtoR=Math.round(rakutenZ-cv2);fStoR=Math.round(rakutenS+cv2);fStoZ=Math.round(an-cv2);}
+  $('settle-detail').textContent='負担割合 さとし'+ratio+'% / しずか'+(100-ratio)+'%';
   var rrows=$('rakuten-rows');rrows.innerHTML='';
-  if(finalStoR>0) rrows.innerHTML+='<div class="transfer-row blue"><span>さとし</span><span class="arrow">→</span><span>楽天銀行</span><span class="amount">'+fmt(finalStoR)+'</span></div>';
-  if(finalZtoR>0) rrows.innerHTML+='<div class="transfer-row blue"><span>しずか</span><span class="arrow">→</span><span>楽天銀行</span><span class="amount">'+fmt(finalZtoR)+'</span></div>';
-  if(finalStoR===0&&finalZtoR===0) rrows.innerHTML='<div class="transfer-row none">楽天銀行への送金なし</div>';
-
-  // 立替精算ボックス
+  if(fStoR>0) rrows.innerHTML+='<div class="transfer-row blue"><span>さとし</span><span class="arrow">→</span><span>楽天銀行</span><span class="amount">'+fmt(fStoR)+'</span></div>';
+  if(fZtoR>0) rrows.innerHTML+='<div class="transfer-row blue"><span>しずか</span><span class="arrow">→</span><span>楽天銀行</span><span class="amount">'+fmt(fZtoR)+'</span></div>';
+  if(fStoR===0&&fZtoR===0) rrows.innerHTML='<div class="transfer-row none">楽天銀行への送金なし</div>';
   var trows=$('transfer-rows');trows.innerHTML='';
-  if(finalZtoS>0) trows.innerHTML='<div class="transfer-row green"><span>しずか</span><span class="arrow">→</span><span>さとし</span><span class="amount">'+fmt(finalZtoS)+'</span></div>';
-  else if(finalStoZ>0) trows.innerHTML='<div class="transfer-row green"><span>さとし</span><span class="arrow">→</span><span>しずか</span><span class="amount">'+fmt(finalStoZ)+'</span></div>';
+  if(fZtoS>0) trows.innerHTML='<div class="transfer-row green"><span>しずか</span><span class="arrow">→</span><span>さとし</span><span class="amount">'+fmt(fZtoS)+'</span></div>';
+  else if(fStoZ>0) trows.innerHTML='<div class="transfer-row green"><span>さとし</span><span class="arrow">→</span><span>しずか</span><span class="amount">'+fmt(fStoZ)+'</span></div>';
   else trows.innerHTML='<div class="transfer-row none">立替精算なし（相殺済み）</div>';
 }
 
+// ---- 年間集計 ----
 async function loadYearData(){
   $('year-label').textContent=currentYear+'年';
-  $('year-thead').innerHTML='<tr><th>カテゴリ1</th><th>カテゴリ2</th>'+
-    Array.from({length:12},function(_,i){return '<th>'+(i+1)+'月</th>';}).join('')+'<th>合計</th></tr>';
+  $('year-thead').innerHTML='<tr><th>カテゴリ1</th><th>カテゴリ2</th>'+Array.from({length:12},function(_,i){return '<th>'+(i+1)+'月</th>';}).join('')+'<th>合計</th></tr>';
   $('year-tbody').innerHTML='<tr><td colspan="15" style="text-align:center;color:var(--text3);padding:20px">読み込み中...</td></tr>';
   var yearData={};
-  function addYear(c1,c2,m,a){
-    var k=c1+'__'+c2;
-    if(!yearData[k]) yearData[k]={cat1:c1,cat2:c2,vals:Array(12).fill(0)};
-    yearData[k].vals[m-1]+=a;
-  }
+  function addYear(c1,c2,m,a){var k=c1+'__'+c2;if(!yearData[k]) yearData[k]={cat1:c1,cat2:c2,vals:Array(12).fill(0)};yearData[k].vals[m-1]+=a;}
   for(var m=1;m<=12;m++){
-    try{
-      var rv=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:currentYear+'年'+m+'月_変動!A2:F500'});
-      (rv.result.values||[]).forEach(function(row){addYear('変動費',row[1]||'',m,parseFloat(row[3])||0);});
-    }catch(e){}
-    try{
-      var rf=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:currentYear+'年'+m+'月_固定!A2:E200'});
-      (rf.result.values||[]).forEach(function(row){addYear(row[0]||'固定費',row[1]||'',m,parseFloat(row[4])||0);});
-    }catch(e){}
+    try{var rv=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:currentYear+'年'+m+'月_変動!A2:H500'});(rv.result.values||[]).forEach(function(row){addYear('変動費',row[1]||'',m,parseFloat(row[3])||0);});}catch(e){}
+    try{var rf=await gapi.client.sheets.spreadsheets.values.get({spreadsheetId:SHEET_ID,range:currentYear+'年'+m+'月_固定!A2:E200'});(rf.result.values||[]).forEach(function(row){addYear(row[0]||'固定費',row[1]||'',m,parseFloat(row[4])||0);});}catch(e){}
   }
   var orderedKeys=[];
-  fixedTemplates.forEach(function(tpl){orderedKeys.push(tpl.cat1+'__'+tpl.cat2);});
+  fixedTemplates.forEach(function(tpl){var k=tpl.cat1+'__'+tpl.cat2;if(orderedKeys.indexOf(k)<0) orderedKeys.push(k);});
   varCategories.forEach(function(cat){orderedKeys.push('変動費__'+cat);});
   var tbody=$('year-tbody');tbody.innerHTML='';
-  var totRow=Array(12).fill(0);var rendered={};
+  var totRow=Array(12).fill(0),rendered={};
   orderedKeys.forEach(function(k){
     var d=yearData[k];if(!d) return;
     var total=d.vals.reduce(function(a,b){return a+b;},0);if(!total) return;
     d.vals.forEach(function(v,i){totRow[i]+=v;});rendered[k]=true;
     var tr=document.createElement('tr');
-    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+
-      d.vals.map(function(v){return '<td>'+(v?fmt(v):'-')+'</td>';}).join('')+'<td>'+fmt(total)+'</td>';
+    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+d.vals.map(function(v){return '<td>'+(v?fmt(v):'-')+'</td>';}).join('')+'<td>'+fmt(total)+'</td>';
     tbody.appendChild(tr);
   });
   Object.keys(yearData).forEach(function(k){
@@ -743,40 +775,29 @@ async function loadYearData(){
     var d=yearData[k];var total=d.vals.reduce(function(a,b){return a+b;},0);if(!total) return;
     d.vals.forEach(function(v,i){totRow[i]+=v;});
     var tr=document.createElement('tr');
-    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+
-      d.vals.map(function(v){return '<td>'+(v?fmt(v):'-')+'</td>';}).join('')+'<td>'+fmt(total)+'</td>';
+    tr.innerHTML='<td>'+escHtml(d.cat1)+'</td><td>'+escHtml(d.cat2)+'</td>'+d.vals.map(function(v){return '<td>'+(v?fmt(v):'-')+'</td>';}).join('')+'<td>'+fmt(total)+'</td>';
     tbody.appendChild(tr);
   });
   var grandTotal=totRow.reduce(function(a,b){return a+b;},0);
   $('year-tfoot').innerHTML='<tr><td colspan="2">合計</td>'+totRow.map(function(v){return '<td>'+fmt(v)+'</td>';}).join('')+'<td>'+fmt(grandTotal)+'</td></tr>';
 }
 
+// ---- ユーティリティ ----
 async function ensureSheet(name){
   var meta=await gapi.client.sheets.spreadsheets.get({spreadsheetId:SHEET_ID});
   var exists=meta.result.sheets.some(function(s){return s.properties.title===name;});
-  if(!exists){
-    await gapi.client.sheets.spreadsheets.batchUpdate({
-      spreadsheetId:SHEET_ID,resource:{requests:[{addSheet:{properties:{title:name}}}]}
-    });
-  }
+  if(!exists) await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId:SHEET_ID,resource:{requests:[{addSheet:{properties:{title:name}}}]}});
 }
-function showStatus(id,msg,ok){
-  var el=$(id);el.textContent=msg;el.className='status '+(ok?'ok':'err');
-  setTimeout(function(){el.textContent='';el.className='status';},3000);
-}
+function showStatus(id,msg,ok){var el=$(id);el.textContent=msg;el.className='status '+(ok?'ok':'err');setTimeout(function(){el.textContent='';el.className='status';},3000);}
 function changeMonth(d){
-  currentMonth+=d;
-  if(currentMonth>12){currentMonth=1;currentYear++;}
-  if(currentMonth<1){currentMonth=12;currentYear--;}
+  currentMonth+=d;if(currentMonth>12){currentMonth=1;currentYear++;}if(currentMonth<1){currentMonth=12;currentYear--;}
   updateMonthTitle();if(accessToken) loadMonthData();
 }
 function updateMonthTitle(){$('month-title').textContent=currentYear+'年'+currentMonth+'月';}
 function switchTab(name,el){
-  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
-  el.classList.add('active');
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});el.classList.add('active');
   ['monthly','yearly','settings'].forEach(function(t){$('tab-'+t).style.display=t===name?'':'none';});
-  if(name==='yearly') loadYearData();
-  if(name==='settings') updateRatioUI();
+  if(name==='yearly') loadYearData();if(name==='settings') updateRatioUI();
 }
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 window.onload=loadGAPI;
